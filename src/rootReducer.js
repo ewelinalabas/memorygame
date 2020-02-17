@@ -22,10 +22,19 @@ const buildBoard = (state, numberOfElements) => {
   return { ...state, phase: 'play', gameBoard: board }
 }
 
+const makeMove = (state, cardId) => {
+  const newGameBoard = [ ...state.gameBoard ]
+  newGameBoard[cardId].visible = true
+
+  return { ...state, gameBoard: newGameBoard }
+}
+
 export const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'BUILD_BOARD':
       return buildBoard(state, action.value);
+    case 'MAKE_MOVE':
+      return makeMove(state, action.id)
     default:
       return state
   } 
