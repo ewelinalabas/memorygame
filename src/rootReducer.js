@@ -1,11 +1,11 @@
 const initialState = {
-  phase: 0
+  phase: 'gameSetup'
 }
 
 export const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'SET_BOARD_SIZE':
-      return { ...state, phase: 1, boardSize: action.value };
+      return { ...state, phase: 'play', boardSize: action.value };
     default:
       return state
   } 

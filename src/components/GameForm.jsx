@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { setBoardSize } from '../actions';
 
 const GameFormPure = (props) => {
-  const [cardsNumber, setCardsNumber] = useState(4)
+  const minNumberOfCards = 4
+  const maxNumberOfCards = 20
+  const [cardsNumber, setCardsNumber] = useState(minNumberOfCards)
+  
   const validateInput = (value) => {
-    return (value >= 4 && value % 2 === 0) ? true : false
+    return (value >= minNumberOfCards && value % 2 === 0) ? true : false
   }
   const handleClick = () => {
     validateInput(cardsNumber) && props.setBoardSize(cardsNumber)
@@ -16,8 +19,8 @@ const GameFormPure = (props) => {
       <p>Input number of cards</p>
       <input 
         type="number" 
-        min="4" 
-        max="20" 
+        min={minNumberOfCards}
+        max={maxNumberOfCards}
         step="2"
         value={cardsNumber} 
         onChange={(e) => setCardsNumber(e.target.value)}
