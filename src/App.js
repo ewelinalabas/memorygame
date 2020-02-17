@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import { connect } from 'react-redux';
 import './App.css';
+import { GameForm } from './components/GameForm';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const AppPure = (props) => {
+  if(props.phase === 'gameSetup') {
+    return ( <GameForm /> );
+  } else {
+    return (
+      <p>Hello</p>
+    )
+  }
 }
 
-export default App;
+export const App = connect(
+  state => ({
+    phase: state.phase
+  }),
+  dispatch => ({})
+)(AppPure);
