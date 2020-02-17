@@ -1,15 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
+import { GameForm } from './components/GameForm';
 
-const AppPure = () => {
-  return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
-  );
+const AppPure = (props) => {
+  if(props.phase === 0) {
+    return ( <GameForm /> );
+  } else {
+    return (
+      <p>Hello</p>
+    )
+  }
 }
 
-export default connect(
-  () => {}
+export const App = connect(
+  state => ({
+    phase: state.phase
+  }),
+  dispatch => ({})
 )(AppPure);
