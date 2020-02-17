@@ -1,6 +1,7 @@
-const SET_BOARD_SIZE = 'SET_BOARD_SIZE'
+const BUILD_BOARD = 'BUILD_BOARD'
 
-export const setBoardSize = (value) => ({
-  type: SET_BOARD_SIZE,
+export const buildBoard = (value) => ({
+  type: BUILD_BOARD,
   value
-})
+});
+

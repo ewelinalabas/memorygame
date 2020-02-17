@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { setBoardSize } from '../actions';
+import { buildBoard } from '../actions';
 
 const GameFormPure = (props) => {
   const minNumberOfCards = 4
   const maxNumberOfCards = 20
   const [cardsNumber, setCardsNumber] = useState(minNumberOfCards)
-  
+
   const validateInput = (value) => {
     return (value >= minNumberOfCards && value % 2 === 0) ? true : false
   }
   const handleClick = () => {
-    validateInput(cardsNumber) && props.setBoardSize(cardsNumber)
+    if(validateInput(cardsNumber)) {
+      props.buildBoard(cardsNumber)
+    }
   }
 
   return (
@@ -33,6 +35,6 @@ const GameFormPure = (props) => {
 export const GameForm = connect(
   state => ({}),
   dispatch => ({
-    setBoardSize: (size) => dispatch(setBoardSize(size))
+    buildBoard: (size) => dispatch(buildBoard(size)),
   })
 )(GameFormPure);
