@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { makeMove } from '../actions';
 
-const Card = ({ handleClick, id }) => {
+const Card = ({ id, visible, value, handleClick}) => {
+  const displayedValue = visible ? value : "" 
   return(
-    <button type="button" onClick={() => handleClick(id)}></button>
+    <button 
+      type="button" 
+      className="card" 
+      onClick={() => handleClick(id)}
+    >
+      {displayedValue}
+    </button>
   )
 }
 
