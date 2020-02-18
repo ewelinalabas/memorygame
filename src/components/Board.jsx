@@ -16,9 +16,7 @@ const Card = ({ id, visible, value, handleClick}) => {
 }
 
 const BoardPure = ({ board, makeMove }) => {
-  const handleClick = (id) => {
-    makeMove(id)
-  }
+  const handleClick = (id) => {makeMove(id)}
 
   return(
     board.map((el, index) => 

@@ -9,7 +9,6 @@ const buildBoard = (state, numberOfElements) => {
   const board = []
   for(let i = 0; i < numberOfElements / 2; i++) {
     const card = {
-      pairId: i, 
       value: availableValues[i], 
       visible: false, 
       matched: false
@@ -22,11 +21,43 @@ const buildBoard = (state, numberOfElements) => {
   return { ...state, phase: 'play', gameBoard: board }
 }
 
+const validateMatch = (cards) => {
+  if(cards[0].value === cards[1].value) {
+    return true
+  } else {
+    return false
+  }
+}
+
+const markMatch = (board, id) => {
+  const matchValue = board[id].value
+  for(let i = 0; i < board.length; i++) {
+    if(board[i].value === matchValue) {
+      board[i].visible = false
+      board[i].matched = true
+    }
+  }
+  return board
+}
+
+const faceDownCards = (board) => {
+  for(let i = 0; i < board.length; i++) {
+    board[i].visible = false
+  }
+  return board
+}
+
 const makeMove = (state, cardId) => {
   const newGameBoard = [ ...state.gameBoard ]
   newGameBoard[cardId].visible = true
-
-  return { ...state, gameBoard: newGameBoard }
+  const cardsFacedUp = newGameBoard.filter(el => el.visible === true)
+  if(cardsFacedUp.length <= 1) {
+    return { ...state, gameBoard: newGameBoard }
+  } else {
+    const isMatch = validateMatch(cardsFacedUp)
+    const updatedGameBoard = isMatch ? markMatch(newGameBoard, cardId) : faceDownCards(newGameBoard)
+    return { ...state, gameBoard: updatedGameBoard }
+  }
 }
 
 export const rootReducer = (state = initialState, action) => {
