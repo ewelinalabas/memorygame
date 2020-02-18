@@ -21,6 +21,10 @@ const buildBoard = (state, numberOfElements) => {
   return { ...state, phase: 'play', gameBoard: board }
 }
 
+const validateIfNotMatched = (card) => {
+  return card.matched ? false : true
+}
+
 const validateMatch = (cards) => {
   if(cards[0].value === cards[1].value) {
     return true
@@ -49,13 +53,16 @@ const faceDownCards = (board) => {
 
 const makeMove = (state, cardId) => {
   const newGameBoard = [ ...state.gameBoard ]
-  newGameBoard[cardId].visible = true
+  const chosenCard = newGameBoard[cardId]
+  validateIfNotMatched(chosenCard) && (chosenCard.visible = true)
   const cardsFacedUp = newGameBoard.filter(el => el.visible === true)
   if(cardsFacedUp.length <= 1) {
     return { ...state, gameBoard: newGameBoard }
   } else {
     const isMatch = validateMatch(cardsFacedUp)
-    const updatedGameBoard = isMatch ? markMatch(newGameBoard, cardId) : faceDownCards(newGameBoard)
+    const updatedGameBoard = isMatch ? 
+      markMatch(newGameBoard, cardId) : 
+      faceDownCards(newGameBoard)
     return { ...state, gameBoard: updatedGameBoard }
   }
 }
