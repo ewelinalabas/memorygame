@@ -25,54 +25,42 @@ const validateIfNotMatched = (card) => {
   return card.matched ? false : true
 }
 
-const validateMatch = (cards) => {
-  if(cards[0].value === cards[1].value) {
-    return true
-  } else {
-    return false
-  }
-}
-
-const markMatch = (board, id) => {
-  const matchValue = board[id].value
-  for(let i = 0; i < board.length; i++) {
-    if(board[i].value === matchValue) {
-      board[i].visible = false
-      board[i].matched = true
+const markMatchedCards = (state, matchValue) => {
+  const newGameBoard = [ ...state.gameBoard ]
+  for(let i = 0; i < newGameBoard.length; i++) {
+    if(newGameBoard[i].value === matchValue) {
+      newGameBoard[i].visible = false
+      newGameBoard[i].matched = true
     }
   }
-  return board
+  return { ...state, gameBoard: newGameBoard }
 }
 
-const faceDownCards = (board) => {
-  for(let i = 0; i < board.length; i++) {
-    board[i].visible = false
+const faceCardsDown = (state) => {
+  const newGameBoard = [ ...state.gameBoard ]
+  for(let i = 0; i < newGameBoard.length; i++) {
+    newGameBoard[i].visible = false
   }
-  return board
+  return { ...state, gameBoard: newGameBoard }
 }
 
-const makeMove = (state, cardId) => {
+const faceCardUp = (state, cardId) => {
   const newGameBoard = [ ...state.gameBoard ]
   const chosenCard = newGameBoard[cardId]
   validateIfNotMatched(chosenCard) && (chosenCard.visible = true)
-  const cardsFacedUp = newGameBoard.filter(el => el.visible === true)
-  if(cardsFacedUp.length <= 1) {
-    return { ...state, gameBoard: newGameBoard }
-  } else {
-    const isMatch = validateMatch(cardsFacedUp)
-    const updatedGameBoard = isMatch ? 
-      markMatch(newGameBoard, cardId) : 
-      faceDownCards(newGameBoard)
-    return { ...state, gameBoard: updatedGameBoard }
-  }
+  return { ...state, gameBoard: newGameBoard }
 }
 
 export const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'BUILD_BOARD':
       return buildBoard(state, action.value);
-    case 'MAKE_MOVE':
-      return makeMove(state, action.id)
+    case 'FACE_CARD_UP':
+      return faceCardUp(state, action.id);
+    case 'FACE_CARDS_DOWN':
+      return faceCardsDown(state);
+    case 'MARK_MATCHING_CARDS':
+      return markMatchedCards(state, action.value);
     default:
       return state
   } 
