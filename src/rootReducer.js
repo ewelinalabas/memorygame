@@ -1,7 +1,8 @@
 import { shuffle } from './utils';
+import { PHASES } from './constants';
 
 const initialState = {
-  phase: 'gameSetup'
+  phase: PHASES[0]
 }
 
 const buildBoard = (state, numberOfElements) => {
@@ -18,7 +19,7 @@ const buildBoard = (state, numberOfElements) => {
   }
   shuffle(board)
 
-  return { ...state, phase: 'play', gameBoard: board }
+  return { ...state, phase: PHASES[1], gameBoard: board }
 }
 
 const validateIfNotMatched = (card) => {
@@ -54,13 +55,13 @@ const faceCardUp = (state, cardId) => {
 export const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'BUILD_BOARD':
-      return buildBoard(state, action.value);
+      return buildBoard(state, action.payload);
     case 'FACE_CARD_UP':
-      return faceCardUp(state, action.id);
+      return faceCardUp(state, action.payload);
     case 'FACE_CARDS_DOWN':
       return faceCardsDown(state);
     case 'MARK_MATCHING_CARDS':
-      return markMatchedCards(state, action.value);
+      return markMatchedCards(state, action.payload);
     default:
       return state
   } 
