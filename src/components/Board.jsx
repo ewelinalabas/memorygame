@@ -1,33 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { makeMove } from '../actions';
-
-const Card = ({ id, visible, value, handleClick}) => {
-  const displayedValue = visible ? value : "" 
-  return(
-    <button 
-      type="button" 
-      className="card" 
-      onClick={() => handleClick(id)}
-    >
-      {displayedValue}
-    </button>
-  )
-}
+import { Card } from './Card';
 
 const BoardPure = ({ board, makeMove }) => {
-  const handleClick = (id) => {
-    makeMove(id)
-  }
+  const handleClick = (id) => {makeMove(id)}
 
   return(
-    board.map((el, index) => 
+    board.map((card, index) => 
       <Card 
         key={index}
         id={index}
-        value={el.value}
-        visible={el.visible} 
-        matched={el.matched} 
+        value={card.value}
+        visible={card.visible} 
+        matched={card.matched} 
         handleClick={handleClick}
       />
     )
