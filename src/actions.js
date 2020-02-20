@@ -33,7 +33,7 @@ export const makeMove = (id) => {
   return(dispatch, getState) => {
     dispatch(faceCardUp(id))
     const { gameBoard } = getState()
-    const cardsFacedUp = gameBoard.filter(card => card.visible === true)
+    const cardsFacedUp = gameBoard.filter(card => card.visible)
     if(cardsFacedUp.length === 2) {
       const matchValue = validateMatch(cardsFacedUp)
       matchValue ? 

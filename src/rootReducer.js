@@ -1,8 +1,10 @@
 import { shuffle } from './utils';
-import { PHASES } from './constants';
+
+export const GAME_SETUP = 'gameSetup'
+export const PLAY = 'play'
 
 const initialState = {
-  phase: PHASES[0]
+  phase: GAME_SETUP
 }
 
 const buildBoard = (state, numberOfElements) => {
@@ -19,36 +21,31 @@ const buildBoard = (state, numberOfElements) => {
   }
   shuffle(board)
 
-  return { ...state, phase: PHASES[1], gameBoard: board }
-}
-
-const validateIfNotMatched = (card) => {
-  return card.matched ? false : true
+  return { ...state, phase: PLAY, gameBoard: board }
 }
 
 const markMatchedCards = (state, matchValue) => {
-  const newGameBoard = [ ...state.gameBoard ]
-  for(let i = 0; i < newGameBoard.length; i++) {
-    if(newGameBoard[i].value === matchValue) {
-      newGameBoard[i].visible = false
-      newGameBoard[i].matched = true
+  const newGameBoard = state.gameBoard.map(card => {
+    if(card.value === matchValue) {
+      card.visible = false
+      card.matched = true
+      return card
+    } else {
+      return card
     }
-  }
+  })
   return { ...state, gameBoard: newGameBoard }
 }
 
 const faceCardsDown = (state) => {
-  const newGameBoard = [ ...state.gameBoard ]
-  for(let i = 0; i < newGameBoard.length; i++) {
-    newGameBoard[i].visible = false
-  }
+  const newGameBoard = state.gameBoard.map(card => card.visible = false)
   return { ...state, gameBoard: newGameBoard }
 }
 
 const faceCardUp = (state, cardId) => {
   const newGameBoard = [ ...state.gameBoard ]
   const chosenCard = newGameBoard[cardId]
-  validateIfNotMatched(chosenCard) && (chosenCard.visible = true)
+  !chosenCard.matched && (chosenCard.visible = true)
   return { ...state, gameBoard: newGameBoard }
 }
 

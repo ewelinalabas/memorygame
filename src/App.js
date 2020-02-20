@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import './App.css';
 import { GameForm } from './components/GameForm';
 import { Board } from './components/Board';
-import { PHASES } from './constants';
+import { GAME_SETUP, PLAY } from './rootReducer';
 
 const AppPure = ({ phase }) => {
-  if(phase === PHASES[0]) {
+  if(phase === GAME_SETUP) {
     return ( <GameForm /> );
-  } else if(phase === PHASES[1]) {
+  } else if(phase === PLAY) {
     return ( <Board /> )
   }
 }

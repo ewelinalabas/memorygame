@@ -9,10 +9,11 @@ const GameFormPure = ({ buildBoard }) => {
 
   const validateInput = (value) => {
     return (
-      MIN_NUMBER_OF_CARDS <= value <= MAX_NUMBER_OF_CARDS &&
-      value % 2 === 0) ? 
-      true : false
+      value >= MIN_NUMBER_OF_CARDS &&
+      value <= MAX_NUMBER_OF_CARDS &&
+      value % 2 === 0) 
   }
+  
   const handleClick = () => {
     if(validateInput(cardsNumber)) {
       buildBoard(cardsNumber)
