@@ -40,9 +40,5 @@ export const makeMove = (id) => {
       setTimeout(() => dispatch(markMatchingCards(matchValue)), 2000) : 
       setTimeout(() => dispatch(faceCardsDown()), 2000)
     }
-    const unmatchedCards = gameBoard.filter(card => card.matched === false)
-    if(unmatchedCards.length === 0) {
-      dispatch()
-    }
   }
 }
