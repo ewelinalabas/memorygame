@@ -73,6 +73,8 @@ export const rootReducer = (state = initialState, action) => {
       return markMatchedCards(state, action.payload);
     case 'END_GAME':
       return { ...state, phase: GAME_END };
+    case 'RESET_GAME':
+      return initialState
     default:
       return state
   } 

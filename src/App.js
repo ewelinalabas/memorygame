@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './App.css';
 import { GameForm } from './components/GameForm';
 import { Board } from './components/Board';
+import { GameSummary } from './components/GameSummary';
 import { GAME_SETUP, PLAY, GAME_END } from './rootReducer';
 
 const AppPure = ({ phase }) => {
@@ -11,7 +12,8 @@ const AppPure = ({ phase }) => {
   } else if(phase === PLAY) {
     return ( <Board /> )
   } else if(phase === GAME_END) {
-    return (<p>End</p>)
+    // return (<p>END</p>)
+    return ( <GameSummary />)
   }
 }
 

@@ -2,6 +2,7 @@ const BUILD_BOARD = 'BUILD_BOARD'
 const FACE_CARD_UP = 'FACE_CARD_UP'
 const FACE_CARDS_DOWN = 'FACE_CARDS_DOWN'
 const MARK_MATCHING_CARDS = 'MARK_MATCHING_CARDS'
+const RESET_GAME = 'RESET_GAME'
 
 export const buildBoard = (value) => ({
   type: BUILD_BOARD,
@@ -42,3 +43,7 @@ export const makeMove = (id) => {
     }
   }
 }
+
+export const resetGame = () => ({
+  type: RESET_GAME
+})
