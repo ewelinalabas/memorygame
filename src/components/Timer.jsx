@@ -2,25 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment'; 
 
-const TimerPure = () => {
+export const Timer = () => {
   const [duration, setDuration] = useState(0)
   useEffect(() => {
-    const duration = setInterval(() => {
+    setTimeout(() => {
       setDuration(duration + 1);
     }, 1000);
-    return () => clearInterval(duration);
   }, [duration]);
+  const durationToDisplay = moment.duration(duration, 'seconds').toString()
 
   return (
     <div>
       <p>You are playing:</p>
-      <p>{duration}</p>
+      <p>{durationToDisplay}</p>
     </div>
   )
 }
 
-export const Timer = connect(
-  state => ({
-  }),
-  dispatch => ({})
-)(TimerPure)

@@ -13,12 +13,11 @@ const AppPure = ({ phase }) => {
   } else if(phase === PLAY) {
     return ( 
       <div>
-        <Board />
         <Timer /> 
+        <Board />
       </div>
     )
   } else if(phase === GAME_END) {
-    // return (<p>END</p>)
     return ( <GameSummary />)
   }
 }

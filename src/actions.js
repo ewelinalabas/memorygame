@@ -33,12 +33,17 @@ const validateMatch = (cards) => {
 export const makeMove = (id) => {
   return(dispatch, getState) => {
     dispatch(faceCardUp(id))
+
     const { gameBoard } = getState()
     const cardsFacedUp = gameBoard.filter(card => card.visible)
+
     if(cardsFacedUp.length === 2) {
       const matchValue = validateMatch(cardsFacedUp)
       matchValue ? 
-      setTimeout(() => dispatch(markMatchingCards(matchValue)), 2000) : 
+      setTimeout(() => {
+        dispatch(markMatchingCards(matchValue))
+        dispatch(faceCardsDown())
+      }, 2000) : 
       setTimeout(() => dispatch(faceCardsDown()), 2000)
     }
   }

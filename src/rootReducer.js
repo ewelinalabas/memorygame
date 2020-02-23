@@ -28,7 +28,6 @@ const buildBoard = (state, numberOfElements) => {
 const markMatchedCards = (state, matchValue) => {
   const newGameBoard = state.gameBoard.map(card => {
     if(card.value === matchValue) {
-      card.visible = false
       card.matched = true
       return card
     } else {
