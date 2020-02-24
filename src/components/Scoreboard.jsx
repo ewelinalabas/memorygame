@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { formatDuration } from '../utils';
+import { Navigation } from './Navigation';
 
 export const Scoreboard = () => {
   const [pastScores, setPastScores] = useState([])
@@ -21,6 +22,7 @@ export const Scoreboard = () => {
   
   return (
     <div>
+      <Navigation />
       <h2>Scoreboard</h2>
       <table>
         <thead>

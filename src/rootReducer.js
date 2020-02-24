@@ -36,16 +36,12 @@ const markMatchedCards = (state, matchValue) => {
     }
   })
   if(validateGameEnd(newGameBoard)) {
-    try {
-      const response = axios.post('https://salty-headland-84520.herokuapp.com/scores', 
+      axios.post('https://salty-headland-84520.herokuapp.com/scores', 
         { score: {
           time: state.duration,
           number_of_cards: state.gameBoard.length
         } 
       });
-    } catch (e) {
-      console.log(`Axios request failed: ${e}`);
-    }
 
     return { ...state, phase: GAME_END, gameBoard: newGameBoard }
   } else {
