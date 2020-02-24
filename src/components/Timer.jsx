@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment'; 
+import moment from 'moment';
 
 export const Timer = () => {
   const [duration, setDuration] = useState(0)
@@ -8,6 +8,7 @@ export const Timer = () => {
     setTimeout(() => {
       setDuration(duration + 1);
     }, 1000);
+    return () => clearInterval(duration);
   }, [duration]);
   const durationToDisplay = moment.duration(duration, 'seconds').toString()
 
