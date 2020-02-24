@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { shuffle } from './utils';
 
 export const GAME_SETUP = 'gameSetup'
@@ -22,7 +23,7 @@ const buildBoard = (state, numberOfElements) => {
   }
   shuffle(board)
 
-  return { ...state, phase: PLAY, gameBoard: board }
+  return { ...state, phase: PLAY, duration: 0, gameBoard: board }
 }
 
 const markMatchedCards = (state, matchValue) => {
@@ -35,6 +36,17 @@ const markMatchedCards = (state, matchValue) => {
     }
   })
   if(validateGameEnd(newGameBoard)) {
+    try {
+      const response = axios.post('https://salty-headland-84520.herokuapp.com/scores', 
+        { score: {
+          time: state.duration,
+          number_of_cards: state.gameBoard.length
+        } 
+      });
+    } catch (e) {
+      console.log(`Axios request failed: ${e}`);
+    }
+
     return { ...state, phase: GAME_END, gameBoard: newGameBoard }
   } else {
     return { ...state, gameBoard: newGameBoard }
@@ -73,7 +85,9 @@ export const rootReducer = (state = initialState, action) => {
     case 'END_GAME':
       return { ...state, phase: GAME_END };
     case 'RESET_GAME':
-      return initialState
+      return initialState;
+    case 'UPDATE_DURATION':
+      return { ...state, duration: state.duration + 1 };
     default:
       return state
   } 

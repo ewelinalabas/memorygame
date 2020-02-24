@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { formatDuration } from '../utils';
+import { updateDuration } from '../actions';
 
-export const Timer = () => {
-  const [duration, setDuration] = useState(0)
+const TimerPure = ({ duration, updateDuration}) => {
+  // const [duration, setDuration] = useState(0)
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setDuration(duration + 1);
+  //   }, 1000);
+  // }, [duration]);
+
   useEffect(() => {
     setTimeout(() => {
-      setDuration(duration + 1);
+      updateDuration();
     }, 1000);
   }, [duration]);
 
@@ -19,3 +27,11 @@ export const Timer = () => {
   )
 }
 
+export const Timer = connect(
+  state => ({
+    duration: state.duration
+  }),
+  dispatch => ({
+    updateDuration: () => dispatch(updateDuration())
+  })
+)(TimerPure)

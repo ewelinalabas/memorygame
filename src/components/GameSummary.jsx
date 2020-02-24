@@ -14,7 +14,6 @@ const GameSummaryPure = ({ resetGame }) => {
 }
 
 export const GameSummary = connect(
-  state => ({}),
   dispatch => ({
     resetGame: () => dispatch(resetGame())
   })

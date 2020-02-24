@@ -25,6 +25,5 @@ const AppPure = ({ phase }) => {
 export const App = connect(
   state => ({
     phase: state.phase
-  }),
-  dispatch => ({})
+  })
 )(AppPure);
