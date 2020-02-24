@@ -2,6 +2,7 @@ const BUILD_BOARD = 'BUILD_BOARD'
 const FACE_CARD_UP = 'FACE_CARD_UP'
 const FACE_CARDS_DOWN = 'FACE_CARDS_DOWN'
 const MARK_MATCHING_CARDS = 'MARK_MATCHING_CARDS'
+const RESET_GAME = 'RESET_GAME'
 
 export const buildBoard = (value) => ({
   type: BUILD_BOARD,
@@ -32,17 +33,22 @@ const validateMatch = (cards) => {
 export const makeMove = (id) => {
   return(dispatch, getState) => {
     dispatch(faceCardUp(id))
+
     const { gameBoard } = getState()
     const cardsFacedUp = gameBoard.filter(card => card.visible)
+
     if(cardsFacedUp.length === 2) {
       const matchValue = validateMatch(cardsFacedUp)
       matchValue ? 
-      setTimeout(() => dispatch(markMatchingCards(matchValue)), 2000) : 
+      setTimeout(() => {
+        dispatch(markMatchingCards(matchValue))
+        dispatch(faceCardsDown())
+      }, 2000) : 
       setTimeout(() => dispatch(faceCardsDown()), 2000)
-    }
-    const unmatchedCards = gameBoard.filter(card => card.matched === false)
-    if(unmatchedCards.length === 0) {
-      dispatch()
     }
   }
 }
+
+export const resetGame = () => ({
+  type: RESET_GAME
+})
