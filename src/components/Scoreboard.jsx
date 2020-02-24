@@ -4,13 +4,9 @@ import * as data from '../data.json';
 
 export const Scoreboard = () => {
   const [pastScores, setPastScores] = useState([])
-  // useEffect(() => {
-  //   axios.get('http://salty-headland-84520.herokuapp.com/scores')
-  //   .then(response => setPastScore(response.data))
-  // }, [])
-
   useEffect(() => {
-    setPastScores(data.default)
+    axios.get('http://salty-headland-84520.herokuapp.com/scores')
+    .then(response => setPastScores(response.data))
   }, [])
   
   const pastScoresItems = pastScores.map((score, index) => {
