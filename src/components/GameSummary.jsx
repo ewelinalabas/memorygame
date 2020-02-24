@@ -1,21 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { resetGame } from '../actions';
+import { ResetButton } from './GameResetButton';
 
-const GameSummaryPure = ({ resetGame }) => {
-  const handleClick = () => {resetGame()}
 
+export const GameSummary = () => {
   return (
     <div>
       <p>Congratulations! You found all matches.</p>
-      <button type="submit" onClick={handleClick}>Start a new game</button>
+      <ResetButton text='Start a new game'/>
     </div>
   )
 }
-
-export const GameSummary = connect(
-  state => ({}),
-  dispatch => ({
-    resetGame: () => dispatch(resetGame())
-  })
-)(GameSummaryPure)

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { shuffle } from './utils';
 
 export const GAME_SETUP = 'gameSetup'
@@ -22,19 +23,23 @@ const buildBoard = (state, numberOfElements) => {
   }
   shuffle(board)
 
-  return { ...state, phase: PLAY, gameBoard: board }
+  return { ...state, phase: PLAY, duration: 0, gameBoard: board }
 }
 
 const markMatchedCards = (state, matchValue) => {
-  const newGameBoard = state.gameBoard.map(card => {
-    if(card.value === matchValue) {
-      card.matched = true
-      return card
-    } else {
-      return card
-    }
-  })
+  const newGameBoard = state.gameBoard.map(card => (
+    card.value === matchValue ? 
+    { ...card, matched: true } :
+    card
+  ))
   if(validateGameEnd(newGameBoard)) {
+      axios.post('https://salty-headland-84520.herokuapp.com/scores', 
+        { score: {
+          time: state.duration,
+          number_of_cards: state.gameBoard.length
+        } 
+      });
+
     return { ...state, phase: GAME_END, gameBoard: newGameBoard }
   } else {
     return { ...state, gameBoard: newGameBoard }
@@ -42,21 +47,21 @@ const markMatchedCards = (state, matchValue) => {
 }
 
 const validateGameEnd = (board) => {
-  return board.filter(card => !card.matched).length === 0 ? true : false
+  return board.filter(card => !card.matched).length === 0
 }
 
 const faceCardsDown = (state) => {
-  const newGameBoard = state.gameBoard.map(card => {
-    card.visible = false
-    return card
-  })
+  const newGameBoard = state.gameBoard.map(card => ({
+    ...card,
+    visible: false
+  }))
     return { ...state, gameBoard: newGameBoard }
 }
 
 const faceCardUp = (state, cardId) => {
   const newGameBoard = [ ...state.gameBoard ]
   const chosenCard = newGameBoard[cardId]
-  if(chosenCard.matched === false) {chosenCard.visible = true}
+  if(!chosenCard.matched) {chosenCard.visible = true}
   return { ...state, gameBoard: newGameBoard }
 }
 
@@ -73,7 +78,9 @@ export const rootReducer = (state = initialState, action) => {
     case 'END_GAME':
       return { ...state, phase: GAME_END };
     case 'RESET_GAME':
-      return initialState
+      return initialState;
+    case 'UPDATE_DURATION':
+      return { ...state, duration: state.duration + 1 };
     default:
       return state
   } 

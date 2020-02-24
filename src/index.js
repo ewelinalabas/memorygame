@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import store from './store';
 import { App } from './App';
+import { Scoreboard } from './components/Scoreboard';
 import * as serviceWorker from './serviceWorker';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
@@ -13,7 +14,7 @@ const routing = (
     <div className="container">
       <Provider store={store}>
         <Route exact path = '/' component = {App} />
-        <Route exact path = '/scoreboard' component = {Scoreboard} />
+        <Route path = '/scoreboard' component = {Scoreboard} />
       </Provider>
     </div>
   </Router>
