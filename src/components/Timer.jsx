@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import moment from 'moment';
+import { formatDuration } from '../utils';
 
 export const Timer = () => {
   const [duration, setDuration] = useState(0)
@@ -8,14 +7,14 @@ export const Timer = () => {
     setTimeout(() => {
       setDuration(duration + 1);
     }, 1000);
-    return () => clearInterval(duration);
   }, [duration]);
-  const durationToDisplay = moment.duration(duration, 'seconds').toString()
+
+  const formattedDuration = formatDuration(duration)
 
   return (
     <div>
       <p>You are playing:</p>
-      <p>{durationToDisplay}</p>
+      <p>{formattedDuration}</p>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import * as data from '../data.json';
+import { formatDuration } from '../utils';
 
 export const Scoreboard = () => {
   const [pastScores, setPastScores] = useState([])
@@ -10,10 +10,11 @@ export const Scoreboard = () => {
   }, [])
   
   const pastScoresItems = pastScores.map((score, index) => {
+    const formattedDuration = formatDuration(score.time)
     return (
       <tr key={index}>
         <td>{score.number_of_cards}</td>
-        <td>{score.time}</td>
+        <td>{formattedDuration}</td>
       </tr>
     )
   })
@@ -22,11 +23,15 @@ export const Scoreboard = () => {
     <div>
       <h2>Scoreboard</h2>
       <table>
-        <tr>
-          <th>Number of cards</th>
-          <th>Play time</th>
-        </tr>
-        {pastScoresItems}
+        <thead>
+          <tr>
+            <th>Number of cards</th>
+            <th>Play time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pastScoresItems}
+        </tbody>
       </table>
     </div>
   )
