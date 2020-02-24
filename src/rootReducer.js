@@ -27,14 +27,11 @@ const buildBoard = (state, numberOfElements) => {
 }
 
 const markMatchedCards = (state, matchValue) => {
-  const newGameBoard = state.gameBoard.map(card => {
-    if(card.value === matchValue) {
-      card.matched = true
-      return card
-    } else {
-      return card
-    }
-  })
+  const newGameBoard = state.gameBoard.map(card => (
+    card.value === matchValue ? 
+    { ...card, matched: true } :
+    card
+  ))
   if(validateGameEnd(newGameBoard)) {
       axios.post('https://salty-headland-84520.herokuapp.com/scores', 
         { score: {
@@ -50,21 +47,21 @@ const markMatchedCards = (state, matchValue) => {
 }
 
 const validateGameEnd = (board) => {
-  return board.filter(card => !card.matched).length === 0 ? true : false
+  return board.filter(card => !card.matched).length === 0
 }
 
 const faceCardsDown = (state) => {
-  const newGameBoard = state.gameBoard.map(card => {
-    card.visible = false
-    return card
-  })
+  const newGameBoard = state.gameBoard.map(card => ({
+    ...card,
+    visible: false
+  }))
     return { ...state, gameBoard: newGameBoard }
 }
 
 const faceCardUp = (state, cardId) => {
   const newGameBoard = [ ...state.gameBoard ]
   const chosenCard = newGameBoard[cardId]
-  if(chosenCard.matched === false) {chosenCard.visible = true}
+  if(!chosenCard.matched) {chosenCard.visible = true}
   return { ...state, gameBoard: newGameBoard }
 }
 
