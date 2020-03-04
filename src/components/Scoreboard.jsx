@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { formatDuration } from '../utils';
+import { formatDuration, compareNumbers } from '../utils';
 import { Navigation } from './Navigation';
 import { fetchPastScores } from '../actions';
 
@@ -16,11 +16,26 @@ const ScoreboardPure = ({ fetchPastScores, pastScores }) => {
       </tr>
     )
   })
+
+  const getOptions = (scores) => {
+    const allNumbers = scores.map(score => score.number_of_cards)
+    const distinctNumbers = [ ...new Set(allNumbers) ]
+    return distinctNumbers.sort(compareNumbers).map((number, index) => (
+      <option value={number} key={index}>
+        {number}
+      </option>
+    ))
+  }
+
+  const optionsForNumberOfCards = getOptions(pastScores)
   
   return (
     <div>
       <Navigation />
       <h2>Scoreboard</h2>
+      <select>
+        {optionsForNumberOfCards}
+      </select>
       <table>
         <thead>
           <tr>

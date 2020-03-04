@@ -18,3 +18,7 @@ export const formatDuration = (seconds) => {
   
   return hh + ":" + mm + ":" + ss
 }
+
+export const compareNumbers = (a, b) => {
+  return a - b
+}

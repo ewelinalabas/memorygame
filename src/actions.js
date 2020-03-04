@@ -18,7 +18,7 @@ export const buildBoard = (value) => ({
 export const makeMove = (id) => {
   return(dispatch, getState) => {
     dispatch(faceCardUp(id))
-
+    
     const { gameBoard } = getState()
     const cardsFacedUp = gameBoard.filter(card => card.visible)
 
