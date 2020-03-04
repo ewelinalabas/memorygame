@@ -38,7 +38,7 @@ const GameFormPure = ({ buildBoard }) => {
 
 export const GameForm = connect(
   state => ({}),
-  dispatch => ({
-    buildBoard: (size) => dispatch(buildBoard(size)),
-  })
+  {
+    buildBoard,
+  }
 )(GameFormPure);

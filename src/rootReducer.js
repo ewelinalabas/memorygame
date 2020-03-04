@@ -6,7 +6,8 @@ export const PLAY = 'play'
 export const GAME_END = 'gameEnd'
 
 const initialState = {
-  phase: GAME_SETUP
+  phase: GAME_SETUP,
+  pastScores: []
 }
 
 const buildBoard = (state, numberOfElements) => {
@@ -65,6 +66,10 @@ const faceCardUp = (state, cardId) => {
   return { ...state, gameBoard: newGameBoard }
 }
 
+const setPastScores = (state, data) => {
+  return { ...state, pastScores: data }
+}
+
 export const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'BUILD_BOARD':
@@ -81,6 +86,8 @@ export const rootReducer = (state = initialState, action) => {
       return initialState;
     case 'UPDATE_DURATION':
       return { ...state, duration: state.duration + 1 };
+    case 'SET_PAST_SCORES':
+      return setPastScores(state, action.payload);
     default:
       return state
   } 

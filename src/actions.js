@@ -1,9 +1,12 @@
+import axios from 'axios';
+
 const BUILD_BOARD = 'BUILD_BOARD'
 const FACE_CARD_UP = 'FACE_CARD_UP'
 const FACE_CARDS_DOWN = 'FACE_CARDS_DOWN'
 const MARK_MATCHING_CARDS = 'MARK_MATCHING_CARDS'
 const RESET_GAME = 'RESET_GAME'
 const UPDATE_DURATION = 'UPDATE_DURATION'
+const SET_PAST_SCORES = 'SET_PAST_SCORES'
 
 export const buildBoard = (value) => ({
   type: BUILD_BOARD,
@@ -55,4 +58,16 @@ export const resetGame = () => ({
 
 export const updateDuration = () => ({
   type: UPDATE_DURATION
+})
+
+export const fetchPastScores = () => {
+  return(dispatch) => {
+  axios.get('http://salty-headland-84520.herokuapp.com/scores')
+  .then(response => dispatch(setPastScores(response.data)))
+  }
+}
+
+export const setPastScores = (data) => ({
+  type: SET_PAST_SCORES,
+  payload: data
 })

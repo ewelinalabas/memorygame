@@ -10,7 +10,7 @@ const ResetButtonPure = ({ resetGame, text }) => {
 
 export const ResetButton = connect(
   state => ({}),
-  dispatch => ({
-    resetGame: () => dispatch(resetGame())
-  })
+  {
+    resetGame
+  }
 )(ResetButtonPure)

@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { formatDuration } from '../utils';
 import { Navigation } from './Navigation';
+import { fetchPastScores } from '../actions';
 
-export const Scoreboard = () => {
-  const [pastScores, setPastScores] = useState([])
-  useEffect(() => {
-    axios.get('http://salty-headland-84520.herokuapp.com/scores')
-    .then(response => setPastScores(response.data))
-  }, [])
+const ScoreboardPure = ({ fetchPastScores, pastScores }) => {
+  useEffect(() => fetchPastScores(), [])
   
   const pastScoresItems = pastScores.map((score, index) => {
     const formattedDuration = formatDuration(score.time)
@@ -38,3 +35,12 @@ export const Scoreboard = () => {
     </div>
   )
 }
+
+export const Scoreboard = connect(
+  state => ({
+    pastScores: state.pastScores
+  }),
+  {
+    fetchPastScores
+  }
+)(ScoreboardPure)

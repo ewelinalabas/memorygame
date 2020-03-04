@@ -24,7 +24,7 @@ export const Timer = connect(
   state => ({
     duration: state.duration
   }),
-  dispatch => ({
-    updateDuration: () => dispatch(updateDuration())
-  })
+  {
+   updateDuration
+  }
 )(TimerPure)

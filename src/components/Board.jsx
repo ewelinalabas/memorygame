@@ -24,7 +24,7 @@ export const Board = connect(
   state => ({
     board: state.gameBoard
   }),
-  dispatch => ({
-    makeMove: (cardId) => dispatch(makeMove(cardId))
-  })
+  {
+    makeMove
+  }
 )(BoardPure);
