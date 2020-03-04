@@ -1,9 +1,11 @@
-import axios from 'axios';
+import { getScores, saveScore } from './APIcalls';
+import { validateMatch, validateGameEnd } from './validators';
 
 const BUILD_BOARD = 'BUILD_BOARD'
 const FACE_CARD_UP = 'FACE_CARD_UP'
 const FACE_CARDS_DOWN = 'FACE_CARDS_DOWN'
 const MARK_MATCHING_CARDS = 'MARK_MATCHING_CARDS'
+const END_GAME = 'END_GAME'
 const RESET_GAME = 'RESET_GAME'
 const UPDATE_DURATION = 'UPDATE_DURATION'
 const SET_PAST_SCORES = 'SET_PAST_SCORES'
@@ -12,6 +14,37 @@ export const buildBoard = (value) => ({
   type: BUILD_BOARD,
   payload: value
 });
+
+export const makeMove = (id) => {
+  return(dispatch, getState) => {
+    dispatch(faceCardUp(id))
+
+    const { gameBoard } = getState()
+    const cardsFacedUp = gameBoard.filter(card => card.visible)
+
+    if(cardsFacedUp.length === 2) {
+      const matchValue = validateMatch(cardsFacedUp)
+      matchValue ? 
+      setTimeout(() => {
+        dispatch(markCardsAndCheckGameEnd(matchValue))
+        dispatch(faceCardsDown())
+      }, 1000) : 
+      setTimeout(() => dispatch(faceCardsDown()), 1000)
+    }
+  }
+};
+
+const markCardsAndCheckGameEnd = (value) => {
+  return(dispatch, getState) => {
+    dispatch(markMatchingCards(value))
+
+    const { gameBoard, duration } = getState()
+    if(validateGameEnd(gameBoard)) {
+      saveScore(duration, gameBoard.length)
+      dispatch(endGame())
+    }
+  }
+};
 
 export const faceCardUp = (id) => ({
   type: FACE_CARD_UP,
@@ -27,30 +60,9 @@ export const markMatchingCards = (value) => ({
   payload: value
 });
 
-const validateMatch = (cards) => {
-  if(cards[0].value === cards[1].value) {
-    return cards[0].value
-  }
-}
-
-export const makeMove = (id) => {
-  return(dispatch, getState) => {
-    dispatch(faceCardUp(id))
-
-    const { gameBoard } = getState()
-    const cardsFacedUp = gameBoard.filter(card => card.visible)
-
-    if(cardsFacedUp.length === 2) {
-      const matchValue = validateMatch(cardsFacedUp)
-      matchValue ? 
-      setTimeout(() => {
-        dispatch(markMatchingCards(matchValue))
-        dispatch(faceCardsDown())
-      }, 2000) : 
-      setTimeout(() => dispatch(faceCardsDown()), 2000)
-    }
-  }
-}
+export const endGame = () => ({
+  type: END_GAME
+});
 
 export const resetGame = () => ({
   type: RESET_GAME
@@ -58,16 +70,15 @@ export const resetGame = () => ({
 
 export const updateDuration = () => ({
   type: UPDATE_DURATION
-})
+});
 
 export const fetchPastScores = () => {
   return(dispatch) => {
-  axios.get('http://salty-headland-84520.herokuapp.com/scores')
-  .then(response => dispatch(setPastScores(response.data)))
+    getScores().then(response => dispatch(setPastScores(response.data)))
   }
-}
+};
 
 export const setPastScores = (data) => ({
   type: SET_PAST_SCORES,
   payload: data
-})
+});
