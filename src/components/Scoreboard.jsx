@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { formatDuration, compareNumbers } from '../utils';
+import { formatDuration } from '../utils';
 import { Navigation } from './Navigation';
+import { NumberOfCardsFilter } from './Filters';
 import { fetchPastScores } from '../actions/scoreboard';
 
-const ScoreboardPure = ({ fetchPastScores, pastScores }) => {
-  const [numberOfCards, setNumberOfCards] = useState('All')
+const ScoreboardPure = ({ fetchPastScores, pastScores, numberOfCards }) => {
   useEffect(() => fetchPastScores(), [])
 
   const filterPastScores = (pastScores) => {
@@ -26,30 +26,12 @@ const ScoreboardPure = ({ fetchPastScores, pastScores }) => {
       </tr>
     )
   })
-
-  const getOptions = (scores) => {
-    const allNumbers = scores.map(score => score.number_of_cards)
-    const distinctNumbers = [ ...new Set(allNumbers) ]
-    distinctNumbers
-      .sort(compareNumbers)
-      .unshift('All')
-
-    return distinctNumbers.map((number, index) => (
-      <option value={number} key={index}>
-        {number}
-      </option>
-    ))
-  }
-
-  const optionsForNumberOfCards = getOptions(pastScores)
   
   return (
     <div>
       <Navigation />
       <h2>Scoreboard</h2>
-      <select value={numberOfCards} onChange={(event) => setNumberOfCards(event.target.value)}>
-        {optionsForNumberOfCards}
-      </select >
+      <NumberOfCardsFilter />
       <table>
         <thead>
           <tr>
@@ -67,7 +49,8 @@ const ScoreboardPure = ({ fetchPastScores, pastScores }) => {
 
 export const Scoreboard = connect(
   state => ({
-    pastScores: state.scoreboard.pastScores
+    pastScores: state.scoreboard.pastScores,
+    numberOfCards: state.scoreboard.NumberOfCardsFilter
   }),
   {
     fetchPastScores
