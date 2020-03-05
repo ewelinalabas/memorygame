@@ -1,5 +1,5 @@
-import { getScores, saveScore } from './APIcalls';
-import { validateMatch, validateGameEnd } from './validators';
+import { saveScore } from '../APIcalls';
+import { validateMatch, validateGameEnd } from '../validators';
 
 const BUILD_BOARD = 'BUILD_BOARD'
 const FACE_CARD_UP = 'FACE_CARD_UP'
@@ -8,7 +8,6 @@ const MARK_MATCHING_CARDS = 'MARK_MATCHING_CARDS'
 const END_GAME = 'END_GAME'
 const RESET_GAME = 'RESET_GAME'
 const UPDATE_DURATION = 'UPDATE_DURATION'
-const SET_PAST_SCORES = 'SET_PAST_SCORES'
 
 export const buildBoard = (value) => ({
   type: BUILD_BOARD,
@@ -70,15 +69,4 @@ export const resetGame = () => ({
 
 export const updateDuration = () => ({
   type: UPDATE_DURATION
-});
-
-export const fetchPastScores = () => {
-  return(dispatch) => {
-    getScores().then(response => dispatch(setPastScores(response.data)))
-  }
-};
-
-export const setPastScores = (data) => ({
-  type: SET_PAST_SCORES,
-  payload: data
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { resetGame } from '../actions';
+import { resetGame } from '../actions/game';
 
 const ResetButtonPure = ({ resetGame, text }) => {
   return (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { formatDuration, compareNumbers } from '../utils';
 import { Navigation } from './Navigation';
-import { fetchPastScores } from '../actions';
+import { fetchPastScores } from '../actions/scoreboard';
 
 const ScoreboardPure = ({ fetchPastScores, pastScores }) => {
   const [numberOfCards, setNumberOfCards] = useState('All')

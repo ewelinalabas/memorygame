@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { formatDuration } from '../utils';
-import { updateDuration } from '../actions';
+import { updateDuration } from '../actions/game';
 
 const TimerPure = ({ duration, updateDuration}) => {
   useEffect(() => {
