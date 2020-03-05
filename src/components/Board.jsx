@@ -22,7 +22,7 @@ const BoardPure = ({ board, makeMove }) => {
 
 export const Board = connect(
   state => ({
-    board: state.gameBoard
+    board: state.game.gameBoard
   }),
   {
     makeMove

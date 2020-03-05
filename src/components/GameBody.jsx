@@ -5,7 +5,7 @@ import { Board } from './Board'
 import { GameSummary } from './GameSummary';
 import { Timer } from './Timer';
 import { ResetButton } from './GameResetButton';
-import { GAME_SETUP, PLAY, GAME_END } from '../rootReducer';
+import { GAME_SETUP, PLAY, GAME_END } from '../reducers/game';
 
 const GameBodyPure = ({ phase }) => {
   if(phase === GAME_SETUP) {
@@ -25,6 +25,6 @@ const GameBodyPure = ({ phase }) => {
 
 export const GameBody = connect(
   state => ({
-    phase: state.phase
+    phase: state.game.phase
   })
 )(GameBodyPure)

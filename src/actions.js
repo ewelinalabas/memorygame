@@ -19,7 +19,7 @@ export const makeMove = (id) => {
   return(dispatch, getState) => {
     dispatch(faceCardUp(id))
     
-    const { gameBoard } = getState()
+    const { gameBoard } = getState().game
     const cardsFacedUp = gameBoard.filter(card => card.visible)
 
     if(cardsFacedUp.length === 2) {
@@ -38,7 +38,7 @@ const markCardsAndCheckGameEnd = (value) => {
   return(dispatch, getState) => {
     dispatch(markMatchingCards(value))
 
-    const { gameBoard, duration } = getState()
+    const { gameBoard, duration } = getState().game
     if(validateGameEnd(gameBoard)) {
       saveScore(duration, gameBoard.length)
       dispatch(endGame())

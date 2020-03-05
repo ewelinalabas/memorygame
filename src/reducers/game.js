@@ -1,4 +1,4 @@
-import { shuffle } from './utils';
+import { shuffle } from '../utils';
 
 export const GAME_SETUP = 'gameSetup'
 export const PLAY = 'play'
@@ -38,7 +38,7 @@ const faceCardsDown = (state) => {
     ...card,
     visible: false
   }))
-    return { ...state, gameBoard: newGameBoard }
+  return { ...state, gameBoard: newGameBoard }
 }
 
 const markMatchingCards = (state, matchValue) => {
@@ -50,11 +50,7 @@ const markMatchingCards = (state, matchValue) => {
   return { ...state, gameBoard: newGameBoard }
 }
 
-const setPastScores = (state, data) => {
-  return { ...state, pastScores: data }
-}
-
-export const rootReducer = (state = initialState, action) => {
+export const game = (state = initialState, action) => {
   switch(action.type) {
     case 'BUILD_BOARD':
       return buildBoard(state, action.payload);
@@ -70,8 +66,6 @@ export const rootReducer = (state = initialState, action) => {
       return initialState;
     case 'UPDATE_DURATION':
       return { ...state, duration: state.duration + 1 };
-    case 'SET_PAST_SCORES':
-      return setPastScores(state, action.payload);
     default:
       return state;
   } 

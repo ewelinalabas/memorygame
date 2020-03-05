@@ -22,7 +22,7 @@ const TimerPure = ({ duration, updateDuration}) => {
 
 export const Timer = connect(
   state => ({
-    duration: state.duration
+    duration: state.game.duration
   }),
   {
    updateDuration

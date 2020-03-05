@@ -1,18 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { formatDuration, compareNumbers } from '../utils';
 import { Navigation } from './Navigation';
 import { fetchPastScores } from '../actions';
 
 const ScoreboardPure = ({ fetchPastScores, pastScores }) => {
+  const [numberOfCards, setNumberOfCards] = useState('All')
   useEffect(() => fetchPastScores(), [])
+
+  const filterPastScores = (pastScores) => {
+    if(numberOfCards !== 'All') {
+      return pastScores.filter(score =>
+        score.number_of_cards === parseInt(numberOfCards)
+      )
+    } else {
+      return pastScores
+    }
+  }
   
-  const pastScoresItems = pastScores.map((score, index) => {
-    const formattedDuration = formatDuration(score.time)
+  const pastScoresItems = filterPastScores(pastScores).map((score, index) => {
     return (
       <tr key={index}>
         <td>{score.number_of_cards}</td>
-        <td>{formattedDuration}</td>
+        <td>{formatDuration(score.time)}</td>
       </tr>
     )
   })
@@ -20,7 +30,11 @@ const ScoreboardPure = ({ fetchPastScores, pastScores }) => {
   const getOptions = (scores) => {
     const allNumbers = scores.map(score => score.number_of_cards)
     const distinctNumbers = [ ...new Set(allNumbers) ]
-    return distinctNumbers.sort(compareNumbers).map((number, index) => (
+    distinctNumbers
+      .sort(compareNumbers)
+      .unshift('All')
+
+    return distinctNumbers.map((number, index) => (
       <option value={number} key={index}>
         {number}
       </option>
@@ -33,9 +47,9 @@ const ScoreboardPure = ({ fetchPastScores, pastScores }) => {
     <div>
       <Navigation />
       <h2>Scoreboard</h2>
-      <select>
+      <select value={numberOfCards} onChange={(event) => setNumberOfCards(event.target.value)}>
         {optionsForNumberOfCards}
-      </select>
+      </select >
       <table>
         <thead>
           <tr>
@@ -53,7 +67,7 @@ const ScoreboardPure = ({ fetchPastScores, pastScores }) => {
 
 export const Scoreboard = connect(
   state => ({
-    pastScores: state.pastScores
+    pastScores: state.scoreboard.pastScores
   }),
   {
     fetchPastScores
