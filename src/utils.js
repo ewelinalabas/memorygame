@@ -19,6 +19,18 @@ export const formatDuration = (seconds) => {
   return hh + ":" + mm + ":" + ss
 }
 
-export const compareNumbers = (a, b) => {
-  return a - b
+const subtract = (values) => {
+  return values[0] - values[1]
+}
+
+export const compareNumbers = (a, b, key, direction) => {
+  const values = direction === 'ASC' ? [a, b] : [b, a]
+
+  if(key === 'created_at') {
+    return subtract(values.map(score => Date.parse(score.created_at)))
+  } else if(key === 'time') {
+    return subtract(values.map(score => score.time))
+  } else {
+    return subtract(values)
+  }
 }
