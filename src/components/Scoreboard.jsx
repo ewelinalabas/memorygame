@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { formatDuration } from '../utils';
 import { Navigation } from './Navigation';
-import { NumberOfCardsFilter } from './Filters';
+import { NumberOfCardsFilter } from './Filter';
 import { fetchPastScores } from '../actions/scoreboard';
 
 const ScoreboardPure = ({ fetchPastScores, pastScores, numberOfCards }) => {
@@ -50,7 +50,7 @@ const ScoreboardPure = ({ fetchPastScores, pastScores, numberOfCards }) => {
 export const Scoreboard = connect(
   state => ({
     pastScores: state.scoreboard.pastScores,
-    numberOfCards: state.scoreboard.NumberOfCardsFilter
+    numberOfCards: state.scoreboard.numberOfCardsFilter
   }),
   {
     fetchPastScores
