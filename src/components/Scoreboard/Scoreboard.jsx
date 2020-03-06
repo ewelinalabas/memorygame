@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { formatDuration } from '../utils';
-import { Navigation } from './Navigation';
+import { Navigation } from '../Navigation';
 import { NumberOfCardsFilter } from './Filter';
-import { fetchPastScores } from '../actions/scoreboard';
+import { ScoresList } from './ScoresList';
+import { fetchPastScores } from '../../actions/scoreboard';
 
 const ScoreboardPure = ({ fetchPastScores, pastScores, numberOfCards }) => {
   useEffect(() => fetchPastScores(), [])
@@ -18,31 +18,12 @@ const ScoreboardPure = ({ fetchPastScores, pastScores, numberOfCards }) => {
     }
   }
   
-  const pastScoresItems = filterPastScores(pastScores).map((score, index) => {
-    return (
-      <tr key={index}>
-        <td>{score.number_of_cards}</td>
-        <td>{formatDuration(score.time)}</td>
-      </tr>
-    )
-  })
-  
   return (
     <div>
       <Navigation />
       <h2>Scoreboard</h2>
       <NumberOfCardsFilter />
-      <table>
-        <thead>
-          <tr>
-            <th>Number of cards</th>
-            <th>Play time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pastScoresItems}
-        </tbody>
-      </table>
+      <ScoresList scores={filterPastScores(pastScores)}/>
     </div>
   )
 }

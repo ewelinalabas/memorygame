@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { makeMove } from '../actions/game';
+import { makeMove } from '../../actions/game';
 import { Card } from './Card';
 
 const BoardPure = ({ board, makeMove }) => {

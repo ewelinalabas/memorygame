@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compareNumbers } from '../utils';
-import { setNumberOfCardsFilter } from '../actions/scoreboard';
+import { compareNumbers } from '../../utils';
+import { setNumberOfCardsFilter } from '../../actions/scoreboard';
 
 const NumberOfCardsFilterPure = ({ pastScores, numberOfCards, setNumberOfCardsFilter }) => {
   const getOptions = (scores) => {

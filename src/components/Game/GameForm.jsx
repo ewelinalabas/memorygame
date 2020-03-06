@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { buildBoard } from '../actions/game';
+import { buildBoard } from '../../actions/game';
 
 const GameFormPure = ({ buildBoard }) => {
   const MIN_NUMBER_OF_CARDS = 4
