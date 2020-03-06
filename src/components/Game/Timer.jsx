@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { formatDuration } from '../utils';
-import { updateDuration } from '../actions';
+import { formatDuration } from '../../utils';
+import { updateDuration } from '../../actions/game';
 
 const TimerPure = ({ duration, updateDuration}) => {
   useEffect(() => {
@@ -22,7 +22,7 @@ const TimerPure = ({ duration, updateDuration}) => {
 
 export const Timer = connect(
   state => ({
-    duration: state.duration
+    duration: state.game.duration
   }),
   {
    updateDuration

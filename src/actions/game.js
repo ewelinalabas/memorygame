@@ -1,5 +1,5 @@
-import { getScores, saveScore } from './APIcalls';
-import { validateMatch, validateGameEnd } from './validators';
+import { saveScore } from '../APIcalls';
+import { validateMatch, validateGameEnd } from '../validators';
 
 const BUILD_BOARD = 'BUILD_BOARD'
 const FACE_CARD_UP = 'FACE_CARD_UP'
@@ -8,7 +8,6 @@ const MARK_MATCHING_CARDS = 'MARK_MATCHING_CARDS'
 const END_GAME = 'END_GAME'
 const RESET_GAME = 'RESET_GAME'
 const UPDATE_DURATION = 'UPDATE_DURATION'
-const SET_PAST_SCORES = 'SET_PAST_SCORES'
 
 export const buildBoard = (value) => ({
   type: BUILD_BOARD,
@@ -18,8 +17,8 @@ export const buildBoard = (value) => ({
 export const makeMove = (id) => {
   return(dispatch, getState) => {
     dispatch(faceCardUp(id))
-
-    const { gameBoard } = getState()
+    
+    const { gameBoard } = getState().game
     const cardsFacedUp = gameBoard.filter(card => card.visible)
 
     if(cardsFacedUp.length === 2) {
@@ -38,7 +37,7 @@ const markCardsAndCheckGameEnd = (value) => {
   return(dispatch, getState) => {
     dispatch(markMatchingCards(value))
 
-    const { gameBoard, duration } = getState()
+    const { gameBoard, duration } = getState().game
     if(validateGameEnd(gameBoard)) {
       saveScore(duration, gameBoard.length)
       dispatch(endGame())
@@ -70,15 +69,4 @@ export const resetGame = () => ({
 
 export const updateDuration = () => ({
   type: UPDATE_DURATION
-});
-
-export const fetchPastScores = () => {
-  return(dispatch) => {
-    getScores().then(response => dispatch(setPastScores(response.data)))
-  }
-};
-
-export const setPastScores = (data) => ({
-  type: SET_PAST_SCORES,
-  payload: data
 });

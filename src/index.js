@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import store from './store';
 import { App } from './App';
-import { Scoreboard } from './components/Scoreboard';
+import { Scoreboard } from './components/Scoreboard/Scoreboard';
 import * as serviceWorker from './serviceWorker';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { makeMove } from '../actions';
+import { makeMove } from '../../actions/game';
 import { Card } from './Card';
 
 const BoardPure = ({ board, makeMove }) => {
@@ -22,7 +22,7 @@ const BoardPure = ({ board, makeMove }) => {
 
 export const Board = connect(
   state => ({
-    board: state.gameBoard
+    board: state.game.gameBoard
   }),
   {
     makeMove
