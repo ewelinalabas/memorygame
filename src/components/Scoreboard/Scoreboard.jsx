@@ -25,15 +25,15 @@ const ScoreboardPure = ({
     }
   }
 
-  const sortScores = (scores, key, direction) => {
-    return scores.sort((a, b) => compareNumbers(a, b, key, direction))
+  const sortScores = (scores, criterion, direction) => {
+    return scores.sort((a, b) => compareNumbers(a, b, criterion, direction))
   }
 
   const orderScores = (scores) => {
     switch(scoresOrder) {
-      case scoresOrderOptions.LATEST_TO_NEWEST:
+      case scoresOrderOptions.OLDEST_TO_NEWEST:
         return sortScores(scores, 'created_at', 'ASC');
-      case scoresOrderOptions.NEWEST_TO_LATEST:
+      case scoresOrderOptions.NEWEST_TO_OLDEST:
         return sortScores(scores, 'created_at', 'DESC');
       case scoresOrderOptions.DURATION_ASCENDING:
         return sortScores(scores, 'time', 'ASC');

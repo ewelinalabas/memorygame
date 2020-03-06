@@ -23,14 +23,14 @@ const subtract = (values) => {
   return values[0] - values[1]
 }
 
-export const compareNumbers = (a, b, key, direction) => {
+export const compareNumbers = (a, b, criterion, direction) => {
   const values = direction === 'ASC' ? [a, b] : [b, a]
 
-  if(key === 'created_at') {
+  if(criterion === 'created_at') {
     return subtract(values.map(score => Date.parse(score.created_at)))
-  } else if(key === 'time') {
+  } else if(criterion === 'time') {
     return subtract(values.map(score => score.time))
   } else {
-    return subtract(values)
+    return a - b
   }
 }

@@ -1,6 +1,6 @@
 export const scoresOrderOptions = {
-  LATEST_TO_NEWEST: 'latestToNewest',
-  NEWEST_TO_LATEST: 'newestToLatest',
+  OLDEST_TO_NEWEST: 'oldestToNewest',
+  NEWEST_TO_OLDEST: 'newestToOldest',
   DURATION_ASCENDING: 'durationAsc', 
   DURATION_DESCENDING: 'durationDesc'
 }

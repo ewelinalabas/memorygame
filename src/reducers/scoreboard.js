@@ -3,7 +3,7 @@ import { scoresOrderOptions } from '../constants';
 const initialState = {
   pastScores: [],
   numberOfCardsFilter: 'All',
-  scoresOrder: scoresOrderOptions.LATEST_TO_NEWEST
+  scoresOrder: scoresOrderOptions.OLDEST_TO_NEWEST
 }
 
 export const scoreboard = (state = initialState, action) => {

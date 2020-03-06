@@ -5,15 +5,18 @@ import { changeScoresOrder } from '../../actions/scoreboard';
 
 const ScoresOrderSelectorPure = ({ scoresOrder, changeScoresOrder }) => {
   return (
-    <select 
-      value={scoresOrder}
-      onChange={(event) => changeScoresOrder(event.target.value)}
-    >
-      <option value={scoresOrderOptions.LATEST_TO_NEWEST}>L-N</option>
-      <option value={scoresOrderOptions.NEWEST_TO_LATEST}>N-L</option>
-      <option value={scoresOrderOptions.DURATION_ASCENDING}>DA</option>
-      <option value={scoresOrderOptions.DURATION_DESCENDING}>DD</option>
-    </select>
+    <label for='ScoresOrderSelector'>Order
+      <select
+        name='ScoresOrderSelector'
+        value={scoresOrder}
+        onChange={(event) => changeScoresOrder(event.target.value)}
+      >
+        <option value={scoresOrderOptions.OLDEST_TO_NEWEST}>oldest to newest</option>
+        <option value={scoresOrderOptions.NEWEST_TO_OLDEST}>newest to oldest</option>
+        <option value={scoresOrderOptions.DURATION_ASCENDING}>play time ascending</option>
+        <option value={scoresOrderOptions.DURATION_DESCENDING}>play time descending</option>
+      </select>
+    </label>
   )
 }
 

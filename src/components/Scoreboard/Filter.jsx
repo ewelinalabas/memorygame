@@ -24,12 +24,15 @@ const NumberOfCardsFilterPure = ({ pastScores, numberOfCards, setNumberOfCardsFi
   const optionsForNumberOfCards = getOptions(pastScores)
 
   return(
-    <select 
-      value={numberOfCards} 
-      onChange={(event) => setNumberOfCardsFilter(event.target.value)}
-    >
-        {optionsForNumberOfCards}
-    </select >
+    <label for='numberOfCardsFilter'>Filter by number of cards
+      <select
+        name='numberOfCardsFilter'
+        value={numberOfCards} 
+        onChange={(event) => setNumberOfCardsFilter(event.target.value)}
+      >
+          {optionsForNumberOfCards}
+      </select >
+    </label>
   )
 }
 
