@@ -34,3 +34,16 @@ export const compareNumbers = (a, b, criterion, direction) => {
     return a - b
   }
 }
+
+export const chunkify = (list) => {
+  const numberOfChunks = Math.ceil(list.length / 20)
+  const chunkedList = []
+  let beginning = 0
+  let end = 20
+  for(let i = 0; i < numberOfChunks; i++) {
+    chunkedList.push(list.slice(beginning, end))
+    beginning += 20
+    end += 20
+  }
+  return chunkedList
+}

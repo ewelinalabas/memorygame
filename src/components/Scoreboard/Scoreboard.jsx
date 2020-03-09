@@ -6,7 +6,7 @@ import { ScoresOrderSelector } from './ScoresOrderSelector';
 import { ScoresList } from './ScoresList';
 import { scoresOrderOptions } from '../../constants';
 import { fetchPastScores } from '../../actions/scoreboard';
-import { compareNumbers } from '../../utils';
+import { compareNumbers, chunkify } from '../../utils';
 
 const ScoreboardPure = ({ 
   fetchPastScores, 
@@ -43,6 +43,10 @@ const ScoreboardPure = ({
         return scores;
     }
   }
+
+  const prepareScores = (scores) => {
+    return chunkify(orderScores(filterScores(scores)))
+  }
   
   return (
     <div>
@@ -50,7 +54,7 @@ const ScoreboardPure = ({
       <h2>Scoreboard</h2>
       <NumberOfCardsFilter />
       <ScoresOrderSelector />
-      <ScoresList scores={orderScores(filterScores(pastScores))}/>
+      <ScoresList scores={prepareScores(pastScores)}/>
     </div>
   )
 }
