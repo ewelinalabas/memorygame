@@ -13,6 +13,7 @@ export const ScoresList = ({ scores }) => {
       <tbody>
         {scores.map((score, index) => 
           <ScoreItem
+            key={index}
             score={score}
             index={index}
           />)

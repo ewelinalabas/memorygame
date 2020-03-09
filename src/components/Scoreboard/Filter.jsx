@@ -24,7 +24,7 @@ const NumberOfCardsFilterPure = ({ pastScores, numberOfCards, setNumberOfCardsFi
   const optionsForNumberOfCards = getOptions(pastScores)
 
   return(
-    <label for='numberOfCardsFilter'>Filter by number of cards
+    <label htmlFor='numberOfCardsFilter'>Filter by number of cards
       <select
         name='numberOfCardsFilter'
         value={numberOfCards} 

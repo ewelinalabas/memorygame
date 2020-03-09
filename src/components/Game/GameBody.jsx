@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Navigation } from '../Navigation';
 import { GameForm } from './GameForm';
 import { Board } from './Board'
 import { GameSummary } from './GameSummary';
@@ -9,7 +10,12 @@ import { GAME_SETUP, PLAY, GAME_END } from '../../reducers/game';
 
 const GameBodyPure = ({ phase }) => {
   if(phase === GAME_SETUP) {
-    return ( <GameForm /> );
+    return ( 
+      <div>
+        <Navigation />
+        <GameForm />
+      </div>
+    )
   } else if(phase === PLAY) {
     return ( 
       <div>
@@ -19,7 +25,12 @@ const GameBodyPure = ({ phase }) => {
       </div>
     )
   } else if(phase === GAME_END) {
-    return ( <GameSummary />)
+    return ( 
+      <div>
+        <Navigation />
+        <GameSummary />
+      </div>
+    )
   }
 }
 

@@ -5,7 +5,7 @@ import { changeScoresOrder } from '../../actions/scoreboard';
 
 const ScoresOrderSelectorPure = ({ scoresOrder, changeScoresOrder }) => {
   return (
-    <label for='ScoresOrderSelector'>Order
+    <label htmlFor='ScoresOrderSelector'>Order
       <select
         name='ScoresOrderSelector'
         value={scoresOrder}
