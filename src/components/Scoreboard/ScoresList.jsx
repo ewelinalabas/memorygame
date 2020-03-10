@@ -22,3 +22,7 @@ export const ScoresList = ({ scores }) => {
     </table>
   )
 }
+
+ScoresList.defaultProps = {
+  scores: []
+}

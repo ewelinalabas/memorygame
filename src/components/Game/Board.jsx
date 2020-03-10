@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { makeMove } from '../../actions/game';
 import { Card } from './Card';
 
-const BoardPure = ({ board, makeMove }) => {
-  const handleClick = (id) => {makeMove(id)}
+const BoardPure = ({ board, makeMove, disabled }) => {
+  const handleClick = (id) => {
+    !disabled && makeMove(id)
+  }
 
   return(
     board.map((card, index) => 
@@ -12,7 +14,8 @@ const BoardPure = ({ board, makeMove }) => {
         key={index}
         id={index}
         value={card.value}
-        visible={card.visible} 
+        visible={card.visible}
+        disabled={disabled}
         matched={card.matched} 
         handleClick={handleClick}
       />
@@ -20,9 +23,14 @@ const BoardPure = ({ board, makeMove }) => {
   )
 }
 
+const twoVisibleCards = (board) => (
+  board.filter(card => card.visible).length === 2
+)
+
 export const Board = connect(
   state => ({
-    board: state.game.gameBoard
+    board: state.game.gameBoard,
+    disabled: twoVisibleCards(state.game.gameBoard)
   }),
   {
     makeMove
