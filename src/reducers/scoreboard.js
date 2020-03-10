@@ -3,7 +3,8 @@ import { scoresOrderOptions } from '../constants';
 const initialState = {
   pastScores: [],
   numberOfCardsFilter: 'All',
-  scoresOrder: scoresOrderOptions.OLDEST_TO_NEWEST
+  scoresOrder: scoresOrderOptions.OLDEST_TO_NEWEST,
+  selectedChunkOfScores: 0
 }
 
 export const scoreboard = (state = initialState, action) => {
@@ -14,6 +15,8 @@ export const scoreboard = (state = initialState, action) => {
       return { ...state, numberOfCardsFilter: action.payload };
     case 'CHANGE_SCORES_ORDER':
       return { ...state, scoresOrder: action.payload };
+    case 'CHANGE_DISPLAYED_SCORES':
+      return { ...state, selectedChunkOfScores: action.payload };
     default:
       return state;
   }

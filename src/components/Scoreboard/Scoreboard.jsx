@@ -4,6 +4,7 @@ import { Navigation } from '../Navigation';
 import { NumberOfCardsFilter } from './Filter';
 import { ScoresOrderSelector } from './ScoresOrderSelector';
 import { ScoresList } from './ScoresList';
+import { ChunksList } from './ChunksList';
 import { scoresOrderOptions } from '../../constants';
 import { fetchPastScores } from '../../actions/scoreboard';
 import { compareNumbers, chunkify } from '../../utils';
@@ -12,7 +13,8 @@ const ScoreboardPure = ({
   fetchPastScores, 
   pastScores, 
   numberOfCards,
-  scoresOrder }) => {
+  scoresOrder,
+  selectedChunk }) => {
   useEffect(() => fetchPastScores(), [])
 
   const filterScores = (scores) => {
@@ -44,17 +46,16 @@ const ScoreboardPure = ({
     }
   }
 
-  const prepareScores = (scores) => {
-    return chunkify(orderScores(filterScores(scores)))
-  }
-  
+  const preparedScores = chunkify(orderScores(filterScores(pastScores)))
+
   return (
     <div>
       <Navigation />
       <h2>Scoreboard</h2>
       <NumberOfCardsFilter />
       <ScoresOrderSelector />
-      <ScoresList scores={prepareScores(pastScores)}/>
+      <ScoresList scores={preparedScores[selectedChunk]} />
+      <ChunksList chunks={preparedScores} />
     </div>
   )
 }
@@ -63,9 +64,10 @@ export const Scoreboard = connect(
   state => ({
     pastScores: state.scoreboard.pastScores,
     numberOfCards: state.scoreboard.numberOfCardsFilter,
-    scoresOrder: state.scoreboard.scoresOrder
+    scoresOrder: state.scoreboard.scoresOrder,
+    selectedChunk: state.scoreboard.selectedChunkOfScores
   }),
   {
-    fetchPastScores,
+    fetchPastScores
   }
 )(ScoreboardPure)
