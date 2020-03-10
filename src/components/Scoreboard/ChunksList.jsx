@@ -19,9 +19,7 @@ const ChunksListPure = ({ chunks, changeChunkOfScores }) => {
 }
 
 export const ChunksList = connect(
-  (state) => ({
-
-  }), 
+  state => ({}), 
   {
     changeChunkOfScores
   }
