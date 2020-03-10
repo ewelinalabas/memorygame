@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Navigation } from '../Navigation';
+import { LoadingMessage } from './LoadingMessage';
+import { ErrorMessage } from './ErrorMessage';
 import { NumberOfCardsFilter } from './Filter';
 import { ScoresOrderSelector } from './ScoresOrderSelector';
 import { ScoresList } from './ScoresList';
@@ -11,11 +13,13 @@ import { compareNumbers, chunkify } from '../../utils';
 
 const ScoreboardPure = ({ 
   fetchPastScores, 
+  loading,
   pastScores, 
+  error,
   numberOfCards,
   scoresOrder,
   selectedChunk }) => {
-  useEffect(() => fetchPastScores(), [])
+  useEffect(() => fetchPastScores(), [fetchPastScores])
 
   const filterScores = (scores) => {
     if(numberOfCards !== 'All') {
@@ -52,17 +56,25 @@ const ScoreboardPure = ({
     <div>
       <Navigation />
       <h2>Scoreboard</h2>
-      <NumberOfCardsFilter />
-      <ScoresOrderSelector />
-      <ScoresList scores={preparedScores[selectedChunk]} />
-      <ChunksList chunks={preparedScores} />
+      { loading && <LoadingMessage /> }
+      { error && <ErrorMessage />}
+      { !loading && !error &&
+        <div>
+          <NumberOfCardsFilter />
+          <ScoresOrderSelector />
+          <ScoresList scores={preparedScores[selectedChunk]} />
+          <ChunksList chunks={preparedScores} />
+        </div>
+      }
     </div>
   )
 }
 
 export const Scoreboard = connect(
   state => ({
+    loading: state.scoreboard.loading,
     pastScores: state.scoreboard.pastScores,
+    error: state.scoreboard.error,
     numberOfCards: state.scoreboard.numberOfCardsFilter,
     scoresOrder: state.scoreboard.scoresOrder,
     selectedChunk: state.scoreboard.selectedChunkOfScores

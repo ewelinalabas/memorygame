@@ -8,14 +8,12 @@ const TimerPure = ({ duration, updateDuration}) => {
     setTimeout(() => {
       updateDuration();
     }, 1000);
-  }, [duration]);
-
-  const formattedDuration = formatDuration(duration)
+  }, [duration, updateDuration]);
 
   return (
     <div>
       <p>You are playing:</p>
-      <p>{formattedDuration}</p>
+      <p>{formatDuration(duration)}</p>
     </div>
   )
 }
