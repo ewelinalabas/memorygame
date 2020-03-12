@@ -54,7 +54,7 @@ const ScoreboardPure = ({
 
   return (
     <div>
-      <Navigation />
+      {/* <Navigation /> */}
       <h2>Scoreboard</h2>
       { loading && <LoadingMessage /> }
       { error && <ErrorMessage />}

@@ -1,18 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import './index.css';
+import './styles/index.css';
 import store from './store';
+import { Navigation } from './components/Navigation';
 import { App } from './App';
 import { Scoreboard } from './components/Scoreboard/Scoreboard';
 import * as serviceWorker from './serviceWorker';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router, withRouter } from 'react-router-dom';
 
 const rootElement = document.getElementById('root')
+const NavigationWithRouter = withRouter(Navigation)
 const routing = (
   <Router>
-    <div className="container">
+    <div className="container-fullwidth">
       <Provider store={store}>
+        <NavigationWithRouter />
         <Route exact path = '/' component = {App} />
         <Route path = '/scoreboard' component = {Scoreboard} />
       </Provider>

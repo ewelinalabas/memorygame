@@ -12,7 +12,7 @@ const GameBodyPure = ({ phase }) => {
   if(phase === GAME_SETUP) {
     return ( 
       <div>
-        <Navigation />
+        {/* <Navigation /> */}
         <GameForm />
       </div>
     )
@@ -27,7 +27,7 @@ const GameBodyPure = ({ phase }) => {
   } else if(phase === GAME_END) {
     return ( 
       <div>
-        <Navigation />
+        {/* <Navigation /> */}
         <GameSummary />
       </div>
     )
