@@ -8,18 +8,19 @@ import { App } from './App';
 import { Scoreboard } from './components/Scoreboard/Scoreboard';
 import * as serviceWorker from './serviceWorker';
 import { Route, BrowserRouter as Router, withRouter } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
 const rootElement = document.getElementById('root')
 const NavigationWithRouter = withRouter(Navigation)
 const routing = (
   <Router>
-    <div className="container-fullwidth">
+    <Container fluid>
       <Provider store={store}>
         <NavigationWithRouter />
         <Route exact path = '/' component = {App} />
         <Route path = '/scoreboard' component = {Scoreboard} />
       </Provider>
-    </div>
+    </Container>
   </Router>
 )
 
