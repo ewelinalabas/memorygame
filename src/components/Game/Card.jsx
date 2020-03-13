@@ -1,14 +1,16 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
-export const Card = ({ id, visible, value, handleClick}) => {
+export const Card = ({ id, visible, matched, value, handleClick}) => {
   const displayedValue = visible ? value : "" 
+  const className = matched ? "card matched" : "card"
   return(
-    <button 
-      type="button" 
-      className="card" 
+    <Button 
+      type="button"
+      className={className} 
       onClick={() => handleClick(id)}
     >
       {displayedValue}
-    </button>
+    </Button>
   )
 }

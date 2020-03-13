@@ -1,11 +1,11 @@
-import { scoresOrderOptions } from '../constants';
+import { SCORES_ORDER_OPTIONS } from '../constants';
 
 const initialState = {
   loading: false,
   pastScores: [],
   error: null,
   numberOfCardsFilter: 'All',
-  scoresOrder: scoresOrderOptions.OLDEST_TO_NEWEST,
+  scoresOrder: SCORES_ORDER_OPTIONS.OLDEST_TO_NEWEST,
   selectedChunkOfScores: 0
 }
 

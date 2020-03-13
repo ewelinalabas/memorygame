@@ -7,7 +7,7 @@ import { NumberOfCardsFilter } from './Filter';
 import { ScoresOrderSelector } from './ScoresOrderSelector';
 import { ScoresList } from './ScoresList';
 import { ChunksList } from './ChunksList';
-import { scoresOrderOptions } from '../../constants';
+import { SCORES_ORDER_OPTIONS, NUMBER_OF_ELEMENTS_PER_PAGE } from '../../constants';
 import { fetchPastScores } from '../../actions/scoreboard';
 import { compareNumbers, chunkify } from '../../utils';
 
@@ -37,20 +37,25 @@ const ScoreboardPure = ({
 
   const orderScores = (scores) => {
     switch(scoresOrder) {
-      case scoresOrderOptions.OLDEST_TO_NEWEST:
+      case SCORES_ORDER_OPTIONS.OLDEST_TO_NEWEST:
         return sortScores(scores, 'created_at', 'ASC');
-      case scoresOrderOptions.NEWEST_TO_OLDEST:
+      case SCORES_ORDER_OPTIONS.NEWEST_TO_OLDEST:
         return sortScores(scores, 'created_at', 'DESC');
-      case scoresOrderOptions.DURATION_ASCENDING:
+      case SCORES_ORDER_OPTIONS.DURATION_ASCENDING:
         return sortScores(scores, 'time', 'ASC');
-      case scoresOrderOptions.DURATION_DESCENDING:
+      case SCORES_ORDER_OPTIONS.DURATION_DESCENDING:
         return sortScores(scores, 'time', 'DESC');
       default:
         return scores;
     }
   }
 
-  const preparedScores = chunkify(orderScores(filterScores(pastScores)))
+  const preparedScores = 
+    chunkify(
+      orderScores(
+        filterScores(pastScores)
+      ), 
+    NUMBER_OF_ELEMENTS_PER_PAGE)
 
   return (
     <div>

@@ -35,7 +35,7 @@ const GameFormPure = ({ buildBoard }) => {
       ></Form.Control>
       <Button 
         type="submit" 
-        variant="outline-primary" 
+        className="submitButton"
         onClick={handleClick}
       >
         Play
