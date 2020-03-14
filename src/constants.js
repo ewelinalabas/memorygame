@@ -10,7 +10,9 @@ import superMario from './icons/icons8-super-mario-100.png';
 import walterWhite from './icons/icons8-walter-white-100.png';
 import questionMark from './icons/icons8-question-mark-100.png';
 import tickBox from './icons/icons8-tick-box-100.png';
+import clock from './icons/icons8-clock-100.png';
 import transparent from './icons/transparent.png';
+import reset from './icons/icons8-reset-100.png';
 
 export const SCORES_ORDER_OPTIONS = {
   OLDEST_TO_NEWEST: 'oldestToNewest',
@@ -34,7 +36,9 @@ export const IMAGES = {
   walterWhite,
   questionMark,
   tickBox,
-  transparent
+  clock,
+  transparent,
+  reset
 }
 
 export const ICONS = Object.keys(IMAGES)

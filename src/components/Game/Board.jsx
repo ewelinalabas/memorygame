@@ -11,6 +11,16 @@ const BoardPure = ({ board, makeMove, disabled }) => {
     !disabled && makeMove(id)
   }
 
+  const divideBoard = (board) => {
+    if(board.length % 5 === 0) {
+      return chunkify(board, 5)
+    } else if(board.length % 4 === 0) {
+      return chunkify(board, 4)
+    } else {
+      return chunkify(board, board.length / 2)
+    }
+  } 
+
   const prepareBoard = (list) => {
     const cards = list.map((card, index) => 
       <Card 
@@ -24,12 +34,7 @@ const BoardPure = ({ board, makeMove, disabled }) => {
       />
     )
 
-    const dividedBoard = 
-      cards.length % 4 === 0 ? 
-      chunkify(cards, 4) : 
-      chunkify(cards, cards.length / 2)
-
-    return dividedBoard.map((row, index) => 
+    return divideBoard(cards).map((row, index) => 
       <Row key={index}>{row}</Row>
     )
   }

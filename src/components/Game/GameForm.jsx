@@ -26,6 +26,7 @@ const GameFormPure = ({ buildBoard }) => {
   return (
     <Form className="form">
       <Form.Label>How many cards would you like to play with?</Form.Label>
+      <Form.Label id="instruction">Choose an even number from 4 to 20.</Form.Label>
       <Form.Control 
         type="number" 
         min={MIN_NUMBER_OF_CARDS}
