@@ -1,16 +1,23 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { IMAGES } from '../../constants';
 
 export const Card = ({ id, visible, matched, value, handleClick}) => {
-  const displayedValue = visible ? value : "" 
   const className = matched ? "card matched" : "card"
+  let image = null
+  if(!visible && !matched) {
+    image = IMAGES['questionMark']
+  } else if(visible && !matched) {
+    image = IMAGES[value]
+  } else if(matched) {
+   image = IMAGES['transparent']
+  }
+ 
   return(
-    <Button 
-      type="button"
-      className={className} 
+    <div 
+      className={className}
       onClick={() => handleClick(id)}
     >
-      {displayedValue}
-    </Button>
+      <img src={image}></img>
+    </div>
   )
 }

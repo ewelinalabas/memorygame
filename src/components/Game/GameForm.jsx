@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { buildBoard } from '../../actions/game';
 import { Form, Button } from 'react-bootstrap';
+import { IMAGES } from '../../constants';
 
 const GameFormPure = ({ buildBoard }) => {
   const MIN_NUMBER_OF_CARDS = 4
@@ -38,7 +39,7 @@ const GameFormPure = ({ buildBoard }) => {
         className="submitButton"
         onClick={handleClick}
       >
-        Play
+        <img src={IMAGES['tickBox']}></img>
       </Button>
     </Form>
   )

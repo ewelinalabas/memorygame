@@ -12,16 +12,18 @@
 }
 
 .form-control {
-  width: 40%;
+  width: 10%;
   text-align: center;
   border-color: rgb(206, 165, 104);
 }
 
 .submitButton {
-  width: 40%;
+  overflow: auto;
   margin-top: 8px;
-  background-color: rgb(127, 147, 167);
-  border-color: rgb(206, 165, 104);
+  /* background-color: rgb(127, 147, 167); */
+  background-color: rgb(247, 247, 247);
+  /* border-color: rgb(206, 165, 104); */
+  border-color: rgb(247, 247, 247);
   transition: 1s;
 }
 
@@ -55,8 +57,16 @@
 
 .card:hover {
   background-color: rgb(73, 103, 134);
+  border: 1px solid rgb(206, 165, 104);
 }
 
-.matched {
-  background-color: rgb(236, 193, 128);
+.card:focus {
+  border: 5px solid rgb(206, 165, 104);
+  box-shadow: none;
 }
+
+.matched, .matched:focus, .matched:hover {
+  background-color: rgb(247, 247, 247);
+  border: none;
+}
+

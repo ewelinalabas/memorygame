@@ -1,4 +1,5 @@
 import { shuffle } from '../utils';
+import { ICONS } from '../constants';
 
 export const GAME_SETUP = 'gameSetup'
 export const PLAY = 'play'
@@ -10,11 +11,10 @@ const initialState = {
 }
 
 const buildBoard = (state, numberOfElements) => {
-  const availableValues = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
   const board = []
   for(let i = 0; i < numberOfElements / 2; i++) {
     const card = {
-      value: availableValues[i], 
+      value: ICONS[i], 
       visible: false, 
       matched: false
     }
