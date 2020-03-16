@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import '../../styles/Scoreboard.css';
 import { Navigation } from '../Navigation';
 import { LoadingMessage } from './LoadingMessage';
 import { ErrorMessage } from './ErrorMessage';
@@ -10,6 +11,7 @@ import { ChunksList } from './ChunksList';
 import { SCORES_ORDER_OPTIONS, NUMBER_OF_ELEMENTS_PER_PAGE } from '../../constants';
 import { fetchPastScores } from '../../actions/scoreboard';
 import { compareNumbers, chunkify } from '../../utils';
+import { Container } from 'react-bootstrap';
 
 const ScoreboardPure = ({ 
   fetchPastScores, 
@@ -58,9 +60,7 @@ const ScoreboardPure = ({
     NUMBER_OF_ELEMENTS_PER_PAGE)
 
   return (
-    <div>
-      {/* <Navigation /> */}
-      <h2>Scoreboard</h2>
+    <Container className="scoreboard">
       { loading && <LoadingMessage /> }
       { error && <ErrorMessage />}
       { !loading && !error &&
@@ -71,7 +71,7 @@ const ScoreboardPure = ({
           <ChunksList chunks={preparedScores} />
         </div>
       }
-    </div>
+    </Container>
   )
 }
 

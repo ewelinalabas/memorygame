@@ -13,6 +13,7 @@ import tickBox from './icons/icons8-tick-box-100.png';
 import clock from './icons/icons8-clock-100.png';
 import transparent from './icons/transparent.png';
 import reset from './icons/icons8-reset-100.png';
+import error from './icons/icons8-error-100.png'
 
 export const SCORES_ORDER_OPTIONS = {
   OLDEST_TO_NEWEST: 'oldestToNewest',
@@ -38,7 +39,8 @@ export const IMAGES = {
   tickBox,
   clock,
   transparent,
-  reset
+  reset,
+  error
 }
 
 export const ICONS = Object.keys(IMAGES)
