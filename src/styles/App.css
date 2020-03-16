@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 10%;
+  /* margin-top: 10%; */
 }
 
 .form-label {
@@ -11,7 +11,7 @@
   font-weight: 400;
 }
 
-#instruction {
+.sublabel {
   font-size: medium;
 }
 
@@ -38,11 +38,20 @@
   margin-top: 8px;
   background-color: rgb(247, 247, 247) !important;
   border-color: rgb(247, 247, 247) !important;
+  opacity: 0.5;
   transition: 1s;
 }
 
 .submitButton:hover {
-  transform: rotate(360deg)
+  opacity: 1;
+}
+
+.gameBody {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 3rem;
 }
 
 .timer {
@@ -98,18 +107,20 @@
 }
 
 .resetButton {
+  justify-self: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
 }
 
 .resetButton button {
   border: none;
   background-color: rgb(247, 247, 247);
+  opacity: 0.5;
   transition: 1s;
 }
 
 .resetButton button:hover {
-  transform: rotate(360deg);
+  opacity: 1;
 }

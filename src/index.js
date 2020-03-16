@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import './styles/index.css';
 import store from './store';
 import { Navigation } from './components/Navigation';
+import { Footer } from './components/Footer';
 import { App } from './App';
 import { Scoreboard } from './components/Scoreboard/Scoreboard';
 import * as serviceWorker from './serviceWorker';
@@ -20,6 +21,7 @@ const routing = (
         <Route exact path = '/' component = {App} />
         <Route path = '/scoreboard' component = {Scoreboard} />
       </Provider>
+      <Footer />
     </Container>
   </Router>
 )

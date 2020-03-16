@@ -42,6 +42,3 @@ export const IMAGES = {
 }
 
 export const ICONS = Object.keys(IMAGES)
-
-
-//<a target="_blank" href="https://icons8.com/icons/set/homer-simpson">Homer Simpson</a>, <a target="_blank" href="https://icons8.com/icons/set/stormtrooper">Stormtrooper</a> and other icons by <a target="_blank" href="https://icons8.com">Icons8</a>

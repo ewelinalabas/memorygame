@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { buildBoard } from '../../actions/game';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { IMAGES } from '../../constants';
 
 const GameFormPure = ({ buildBoard }) => {
@@ -26,7 +26,7 @@ const GameFormPure = ({ buildBoard }) => {
   return (
     <Form className="form">
       <Form.Label>How many cards would you like to play with?</Form.Label>
-      <Form.Label id="instruction">Choose an even number from 4 to 20.</Form.Label>
+      <Form.Label className="sublabel">Choose an even number from 4 to 20.</Form.Label>
       <Form.Control 
         type="number" 
         min={MIN_NUMBER_OF_CARDS}
@@ -35,13 +35,13 @@ const GameFormPure = ({ buildBoard }) => {
         value={cardsNumber} 
         onChange={(event) => setCardsNumber(event.target.value)}
       ></Form.Control>
-      <Button 
+      <button 
         type="submit" 
         className="submitButton"
         onClick={handleClick}
       >
         <img src={IMAGES['tickBox']}></img>
-      </Button>
+      </button>
     </Form>
   )
 }
