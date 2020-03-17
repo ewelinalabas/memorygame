@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  /* margin-top: 10%; */
 }
 
 .form-label {
@@ -16,22 +15,25 @@
 }
 
 .form-control, .form-control:focus {
+  width: max-content;
   font-size: xx-large;
   text-align: center;
   border: none;
+  border-bottom: 1px solid rgb(73, 103, 134);
+  /* border-radius: 0px; */
   box-shadow: none;
   background-color: rgb(247, 247, 247);
 }
 
-.form-control::-webkit-outer-spin-button,
+/* .form-control::-webkit-outer-spin-button,
 .form-control::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+} */
 
-.form-control[type=number] {
+/* .form-control[type=number] {
   -moz-appearance: textfield;
-}
+} */
 
 .submitButton {
   overflow: auto;

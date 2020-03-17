@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Form } from 'react-bootstrap';
 import { compareNumbers } from '../../utils';
 import { setNumberOfCardsFilter } from '../../actions/scoreboard';
 
@@ -24,15 +25,21 @@ const NumberOfCardsFilterPure = ({ pastScores, numberOfCards, setNumberOfCardsFi
   const optionsForNumberOfCards = getOptions(pastScores)
 
   return(
-    <label htmlFor='numberOfCardsFilter'>Filter by number of cards
-      <select
-        name='numberOfCardsFilter'
+    <Form className="filter">
+      <Form.Label htmlFor='numberOfCardsFilter'>
+        Filter by number of cards
+      </Form.Label>
+      <Form.Control
+        as="select"
+        size="sm"
+        custom
+        name="numberOfCardsFilter"
         value={numberOfCards} 
         onChange={(event) => setNumberOfCardsFilter(event.target.value)}
       >
           {optionsForNumberOfCards}
-      </select >
-    </label>
+      </Form.Control>
+    </Form>
   )
 }
 

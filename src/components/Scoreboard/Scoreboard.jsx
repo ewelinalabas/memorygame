@@ -60,16 +60,18 @@ const ScoreboardPure = ({
     NUMBER_OF_ELEMENTS_PER_PAGE)
 
   return (
-    <Container className="scoreboard">
+    <Container className="scoreboardBody">
       { loading && <LoadingMessage /> }
       { error && <ErrorMessage />}
       { !loading && !error &&
-        <div>
-          <NumberOfCardsFilter />
-          <ScoresOrderSelector />
+        <Container className="scoreboard">
+          <div className="filtersGroup">
+            <NumberOfCardsFilter />
+            <ScoresOrderSelector />
+          </div>
           <ScoresList scores={preparedScores[selectedChunk]} />
           <ChunksList chunks={preparedScores} />
-        </div>
+        </Container>
       }
     </Container>
   )

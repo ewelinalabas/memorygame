@@ -22,7 +22,7 @@ export const SCORES_ORDER_OPTIONS = {
   DURATION_DESCENDING: 'durationDesc'
 }
 
-export const NUMBER_OF_ELEMENTS_PER_PAGE = 20;
+export const NUMBER_OF_ELEMENTS_PER_PAGE = 15;
 
 export const IMAGES = {
   anonymousMask, 
