@@ -41,6 +41,7 @@
 .filter label, .filter select, .filter select:focus {
   font-size: medium;
   width: auto;
+  border: none;
 }
 
 table {
