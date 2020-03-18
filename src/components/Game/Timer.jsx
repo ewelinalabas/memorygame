@@ -5,12 +5,12 @@ import { updateDuration } from '../../actions/game';
 import { Container } from 'react-bootstrap';
 import { IMAGES } from '../../constants';
 
-const TimerPure = ({ duration, updateDuration}) => {
+const TimerPure = ({ duration, paused, updateDuration}) => {
   useEffect(() => {
-    setTimeout(() => {
+    !paused && setTimeout(() => {
       updateDuration();
     }, 1000);
-  }, [duration, updateDuration]);
+  }, [paused, duration, updateDuration]);
 
   return (
     <Container className="timer">
@@ -23,7 +23,8 @@ const TimerPure = ({ duration, updateDuration}) => {
 
 export const Timer = connect(
   state => ({
-    duration: state.game.duration
+    duration: state.game.duration,
+    paused: state.game.paused
   }),
   {
    updateDuration

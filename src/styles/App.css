@@ -118,6 +118,7 @@
 
 .resetButton button {
   border: none;
+  box-shadow: none;
   background-color: rgb(247, 247, 247);
   opacity: 0.5;
   transition: 1s;

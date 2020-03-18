@@ -1,3 +1,4 @@
+import logo from './icons/icons8-ace-of-hearts-50.png';
 import anonymousMask from './icons/icons8-anonymous-mask-100.png';
 import futuramaBender from './icons/icons8-futurama-bender-100.png';
 import futuramaMom from './icons/icons8-futurama-mom-100.png';
@@ -40,7 +41,8 @@ export const IMAGES = {
   clock,
   transparent,
   reset,
-  error
+  error,
+  logo
 }
 
 export const ICONS = Object.keys(IMAGES)

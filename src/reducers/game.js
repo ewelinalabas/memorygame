@@ -23,7 +23,7 @@ const buildBoard = (state, numberOfElements) => {
   }
   shuffle(board)
 
-  return { ...state, phase: PLAY, duration: 0, gameBoard: board }
+  return { ...state, phase: PLAY, duration: 0, paused: false, gameBoard: board }
 }
 
 const faceCardUp = (state, cardId) => {
@@ -66,6 +66,8 @@ export const game = (state = initialState, action) => {
       return initialState;
     case 'UPDATE_DURATION':
       return { ...state, duration: state.duration + 1 };
+    case 'PAUSE_GAME':
+      return { ...state, paused: action.payload};
     default:
       return state;
   } 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap';
+import { Modal, Button} from 'react-bootstrap';
 
 export const GameResetModal = ({ isOpen, resetGame, closeModal }) => {
   return (
@@ -15,8 +15,8 @@ export const GameResetModal = ({ isOpen, resetGame, closeModal }) => {
         <p>Do you want to start a new game?</p>
       </Modal.Body>
       <Modal.Footer>
-        <button onClick={resetGame}>Yes</button>
-        <button onClick={closeModal}>Cancel</button>
+        <Button variant="light" onClick={resetGame}>Yes</Button>
+        <Button variant="dark" onClick={closeModal}>Cancel</Button>
       </Modal.Footer>
     </Modal>
   )

@@ -8,6 +8,7 @@ const MARK_MATCHING_CARDS = 'MARK_MATCHING_CARDS'
 const END_GAME = 'END_GAME'
 const RESET_GAME = 'RESET_GAME'
 const UPDATE_DURATION = 'UPDATE_DURATION'
+const PAUSE_GAME = 'PAUSE_GAME'
 
 export const buildBoard = (value) => ({
   type: BUILD_BOARD,
@@ -70,3 +71,8 @@ export const resetGame = () => ({
 export const updateDuration = () => ({
   type: UPDATE_DURATION
 });
+
+export const pauseGame = (isPaused) => ({
+  type: PAUSE_GAME,
+  payload: isPaused
+})
