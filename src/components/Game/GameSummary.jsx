@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Form } from 'react-bootstrap';
 import { ResetButton } from './GameResetButton';
+import { resetGame } from '../../actions/game';
 
 
-export const GameSummary = () => {
+const GameSummaryPure = ({ resetGame }) => {
   return (
     <Form className="form">
       <Form.Label>
@@ -12,7 +14,14 @@ export const GameSummary = () => {
       <Form.Label>
         You found all matches.
       </Form.Label>
-      <ResetButton text='New game'/>
+      <ResetButton action={resetGame} text='New game'/>
     </Form>
   )
 }
+
+export const GameSummary = connect(
+  state => ({}),
+  {
+    resetGame
+  }
+)(GameSummaryPure)

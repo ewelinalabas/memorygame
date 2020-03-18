@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Navigation } from '../Navigation';
 import { GameForm } from './GameForm';
+import { GamePlay } from './GamePlay';
 import { Board } from './Board'
 import { GameSummary } from './GameSummary';
 import { Timer } from './Timer';
@@ -17,13 +18,7 @@ const GameBodyPure = ({ phase }) => {
       </div>
     )
   } else if(phase === PLAY) {
-    return ( 
-      <div className="gameBody">
-        <Timer /> 
-        <Board />
-        <ResetButton text='Reset'/>
-      </div>
-    )
+    return (<GamePlay />)
   } else if(phase === GAME_END) {
     return ( 
       <div className="gameBody">
