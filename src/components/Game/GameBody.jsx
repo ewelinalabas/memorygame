@@ -12,19 +12,19 @@ import { GAME_SETUP, PLAY, GAME_END } from '../../reducers/game';
 const GameBodyPure = ({ phase }) => {
   if(phase === GAME_SETUP) {
     return ( 
-      <div className="gameBody">
-        {/* <Navigation /> */}
+      // <div className="gameBody">
+        // {/* <Navigation /> */}
         <GameForm />
-      </div>
+      // </div>
     )
   } else if(phase === PLAY) {
     return (<GamePlay />)
   } else if(phase === GAME_END) {
     return ( 
-      <div className="gameBody">
-        {/* <Navigation /> */}
+      // <div className="gameBody">
+        // {/* <Navigation /> */}
         <GameSummary />
-      </div>
+      // </div>
     )
   }
 }

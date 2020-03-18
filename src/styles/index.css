@@ -5,9 +5,9 @@ body {
   background-color: rgb(247, 247, 247);
 }
 
-.container-fluid {
+/* .container-fluid {
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: 0 0 0 0;
-}
+} */

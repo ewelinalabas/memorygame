@@ -15,14 +15,14 @@ const rootElement = document.getElementById('root')
 const NavigationWithRouter = withRouter(Navigation)
 const routing = (
   <Router>
-    <Container fluid>
+    {/* <Container fluid> */}
       <Provider store={store}>
         <NavigationWithRouter />
         <Route exact path = '/' component = {App} />
         <Route path = '/scoreboard' component = {Scoreboard} />
       </Provider>
       <Footer />
-    </Container>
+    {/* </Container> */}
   </Router>
 )
 
