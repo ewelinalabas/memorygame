@@ -5,7 +5,7 @@ const initialState = {
   pastScores: [],
   error: null,
   numberOfCardsFilter: 'All',
-  scoresOrder: SCORES_ORDER_OPTIONS.OLDEST_TO_NEWEST,
+  scoresOrder: SCORES_ORDER_OPTIONS.NEWEST_TO_OLDEST,
   selectedChunkOfScores: 0
 }
 
