@@ -7,6 +7,6 @@ export const App = () => {
     <div className="gameBody">
       <GameBody /> 
     </div>
-  )
-}
+  );
+};
 

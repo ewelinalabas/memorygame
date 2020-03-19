@@ -7,7 +7,7 @@ const initialState = {
   numberOfCardsFilter: 'All',
   scoresOrder: SCORES_ORDER_OPTIONS.NEWEST_TO_OLDEST,
   selectedChunkOfScores: 0
-}
+};
 
 export const scoreboard = (state = initialState, action) => {
   switch(action.type) {
@@ -27,5 +27,5 @@ export const scoreboard = (state = initialState, action) => {
       return { ...state, selectedChunkOfScores: action.payload };
     default:
       return state;
-  }
-}
+  };
+};

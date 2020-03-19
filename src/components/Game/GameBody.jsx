@@ -1,36 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Navigation } from '../Navigation';
 import { GameForm } from './GameForm';
 import { GamePlay } from './GamePlay';
-import { Board } from './Board'
 import { GameSummary } from './GameSummary';
-import { Timer } from './Timer';
-import { ResetButton } from './GameResetButton';
-import { GAME_SETUP, PLAY, GAME_END } from '../../reducers/game';
+import { PHASES } from '../../constants';
 
 const GameBodyPure = ({ phase }) => {
-  if(phase === GAME_SETUP) {
-    return ( 
-      // <div className="gameBody">
-        // {/* <Navigation /> */}
-        <GameForm />
-      // </div>
-    )
-  } else if(phase === PLAY) {
+  if(phase === PHASES.GAME_SETUP) {
+    return (<GameForm />)
+  } else if(phase === PHASES.PLAY) {
     return (<GamePlay />)
-  } else if(phase === GAME_END) {
-    return ( 
-      // <div className="gameBody">
-        // {/* <Navigation /> */}
-        <GameSummary />
-      // </div>
-    )
-  }
-}
+  } else if(phase === PHASES.GAME_END) {
+    return (<GameSummary />)
+  };
+};
 
 export const GameBody = connect(
   state => ({
     phase: state.game.phase
   })
-)(GameBodyPure)
+)(GameBodyPure);

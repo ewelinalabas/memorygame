@@ -7,5 +7,5 @@ export const ScoreItem = ({ score, index }) => {
         <td>{score.number_of_cards}</td>
         <td>{formatDuration(score.time)}</td>
     </tr>
-  )
-}
+  );
+};

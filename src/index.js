@@ -1,30 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route, BrowserRouter as Router, withRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import * as serviceWorker from './serviceWorker';
 import './styles/index.css';
 import store from './store';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import { App } from './App';
 import { Scoreboard } from './components/Scoreboard/Scoreboard';
-import * as serviceWorker from './serviceWorker';
-import { Route, BrowserRouter as Router, withRouter } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
 
-const rootElement = document.getElementById('root')
-const NavigationWithRouter = withRouter(Navigation)
+const rootElement = document.getElementById('root');
+const NavigationWithRouter = withRouter(Navigation);
 const routing = (
   <Router>
-    {/* <Container fluid> */}
       <Provider store={store}>
         <NavigationWithRouter />
         <Route exact path = '/' component = {App} />
         <Route path = '/scoreboard' component = {Scoreboard} />
       </Provider>
       <Footer />
-    {/* </Container> */}
   </Router>
-)
+);
 
 ReactDOM.render(routing, rootElement);
 

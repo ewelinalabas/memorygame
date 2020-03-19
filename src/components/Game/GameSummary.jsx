@@ -14,14 +14,14 @@ const GameSummaryPure = ({ resetGame }) => {
       <Form.Label>
         You found all matches.
       </Form.Label>
-      <ResetButton action={resetGame} text='New game'/>
+      <ResetButton action={resetGame} text="New game"/>
     </Form>
-  )
-}
+  );
+};
 
 export const GameSummary = connect(
   state => ({}),
   {
     resetGame
   }
-)(GameSummaryPure)
+)(GameSummaryPure);

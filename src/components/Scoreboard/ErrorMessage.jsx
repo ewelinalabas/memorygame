@@ -9,5 +9,5 @@ export const ErrorMessage = () => {
       <p className="error">Something went wrong.</p>
       <p className="error">Try again later.</p>
     </Container>
-  )
-}
+  );
+};

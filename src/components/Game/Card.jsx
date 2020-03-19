@@ -2,15 +2,16 @@ import React from 'react';
 import { IMAGES } from '../../constants';
 
 export const Card = ({ id, visible, matched, value, handleClick}) => {
-  const className = matched ? "card matched" : "card"
-  let image = null
+  const className = matched ? "card matched" : "card";
+  let image = null;
+
   if(!visible && !matched) {
     image = IMAGES['questionMark']
   } else if(visible && !matched) {
     image = IMAGES[value]
   } else if(matched) {
    image = IMAGES['transparent']
-  }
+  };
  
   return(
     <div 
@@ -19,5 +20,5 @@ export const Card = ({ id, visible, matched, value, handleClick}) => {
     >
       <img src={image}></img>
     </div>
-  )
-}
+  );
+};

@@ -19,5 +19,5 @@ export const Navigation = ({ location }) => {
           </Nav.Link>
         </Nav>
     </Navbar>
-  )
-}
+  );
+};

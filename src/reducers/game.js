@@ -1,14 +1,10 @@
 import { shuffle } from '../utils';
-import { ICONS } from '../constants';
-
-export const GAME_SETUP = 'gameSetup'
-export const PLAY = 'play'
-export const GAME_END = 'gameEnd'
+import { PHASES, ICONS } from '../constants';
 
 const initialState = {
-  phase: GAME_SETUP,
+  phase: PHASES.GAME_SETUP,
   pastScores: []
-}
+};
 
 const buildBoard = (state, numberOfElements) => {
   const board = []
@@ -17,38 +13,41 @@ const buildBoard = (state, numberOfElements) => {
       value: ICONS[i], 
       visible: false, 
       matched: false
-    }
-    const matchingCard = { ...card }
+    };
+    const matchingCard = { ...card };
     board.push(card, matchingCard)
-  }
+  };
   shuffle(board)
 
-  return { ...state, phase: PLAY, duration: 0, paused: false, gameBoard: board }
-}
+  return { ...state, phase: PHASES.PLAY, duration: 0, paused: false, gameBoard: board };
+};
 
 const faceCardUp = (state, cardId) => {
-  const newGameBoard = [ ...state.gameBoard ]
-  const chosenCard = newGameBoard[cardId]
-  if(!chosenCard.matched) {chosenCard.visible = true}
-  return { ...state, gameBoard: newGameBoard }
-}
+  const newGameBoard = [ ...state.gameBoard ];
+  const chosenCard = newGameBoard[cardId];
+  if(!chosenCard.matched) {chosenCard.visible = true};
+
+  return { ...state, gameBoard: newGameBoard };
+};
 
 const faceCardsDown = (state) => {
   const newGameBoard = state.gameBoard.map(card => ({
     ...card,
     visible: false
-  }))
-  return { ...state, gameBoard: newGameBoard }
-}
+  }));
+
+  return { ...state, gameBoard: newGameBoard };
+};
 
 const markMatchingCards = (state, matchValue) => {
   const newGameBoard = state.gameBoard.map(card => (
     card.value === matchValue ? 
     { ...card, matched: true } :
     card
-  ))
-  return { ...state, gameBoard: newGameBoard }
-}
+  ));
+
+  return { ...state, gameBoard: newGameBoard };
+};
 
 export const game = (state = initialState, action) => {
   switch(action.type) {
@@ -61,7 +60,7 @@ export const game = (state = initialState, action) => {
     case 'MARK_MATCHING_CARDS':
       return markMatchingCards(state, action.payload);
     case 'END_GAME':
-      return { ...state, phase: GAME_END };
+      return { ...state, phase: PHASES.GAME_END };
     case 'RESET_GAME':
       return initialState;
     case 'UPDATE_DURATION':
@@ -70,5 +69,5 @@ export const game = (state = initialState, action) => {
       return { ...state, paused: action.payload};
     default:
       return state;
-  } 
-}
+  };
+};

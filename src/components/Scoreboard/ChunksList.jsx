@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Pagination } from 'react-bootstrap';
-import { changeChunkOfScores } from '../../actions/scoreboard'
+import { changeChunkOfScores } from '../../actions/scoreboard';
 
-const ChunksListPure = ({ chunks, selectedChunkOfScores, changeChunkOfScores }) => {
+const ChunksListPure = ({
+  chunks, 
+  selectedChunkOfScores, 
+  changeChunkOfScores }) => {
   return (
-    <Pagination onClick={(event) => changeChunkOfScores(event.target.text - 1)} size="sm">
+    <Pagination 
+      onClick={(event) => changeChunkOfScores(event.target.text - 1)} 
+      size="sm"
+    >
       {chunks.map((chunk, index) => (
         <Pagination.Item 
           key={index}
@@ -15,8 +21,8 @@ const ChunksListPure = ({ chunks, selectedChunkOfScores, changeChunkOfScores }) 
         </Pagination.Item>
       ))}
     </Pagination>
-  )
-}
+  );
+};
 
 export const ChunksList = connect(
   state => ({
@@ -25,8 +31,8 @@ export const ChunksList = connect(
   {
     changeChunkOfScores
   }
-)(ChunksListPure)
+)(ChunksListPure);
 
 ChunksListPure.defaultProps = {
   chunks: []
-}
+};

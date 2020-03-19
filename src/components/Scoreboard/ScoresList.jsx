@@ -21,9 +21,9 @@ export const ScoresList = ({ scores }) => {
         }
       </tbody>
     </Table>
-  )
-}
+  );
+};
 
 ScoresList.defaultProps = {
   scores: []
-}
+};

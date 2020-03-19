@@ -23,8 +23,8 @@ const ScoresOrderSelectorPure = ({ scoresOrder, changeScoresOrder }) => {
         <option value={SCORES_ORDER_OPTIONS.DURATION_DESCENDING}>play time descending</option>
       </Form.Control>
     </Form>
-  )
-}
+  );
+};
 
 export const ScoresOrderSelector = connect(
   state => ({
@@ -33,4 +33,4 @@ export const ScoresOrderSelector = connect(
   {
     changeScoresOrder
   }
-)(ScoresOrderSelectorPure)
+  )(ScoresOrderSelectorPure);

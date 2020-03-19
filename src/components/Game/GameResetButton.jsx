@@ -5,10 +5,13 @@ import { IMAGES } from '../../constants';
 export const ResetButton = ({ action, text }) => {
   return (
     <Container className="resetButton">
-      <button type="submit" onClick={action}>
+      <button 
+        type="submit" 
+        onClick={action}
+      >
         <img src={IMAGES["reset"]}></img>
         {text}
       </button>
     </Container>
-  )
-}
+  );
+};

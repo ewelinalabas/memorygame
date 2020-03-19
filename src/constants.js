@@ -14,14 +14,23 @@ import tickBox from './icons/icons8-tick-box-100.png';
 import clock from './icons/icons8-clock-100.png';
 import transparent from './icons/transparent.png';
 import reset from './icons/icons8-reset-100.png';
-import error from './icons/icons8-error-100.png'
+import error from './icons/icons8-error-100.png';
+
+export const PHASES = {
+  GAME_SETUP: 'gameSetup',
+  PLAY: 'play',
+  GAME_END: 'gameEnd'
+};
+
+export const MIN_NUMBER_OF_CARDS = 4;
+export const MAX_NUMBER_OF_CARDS = 20;
 
 export const SCORES_ORDER_OPTIONS = {
   OLDEST_TO_NEWEST: 'oldestToNewest',
   NEWEST_TO_OLDEST: 'newestToOldest',
   DURATION_ASCENDING: 'durationAsc', 
   DURATION_DESCENDING: 'durationDesc'
-}
+};
 
 export const NUMBER_OF_ELEMENTS_PER_PAGE = 15;
 
@@ -43,6 +52,6 @@ export const IMAGES = {
   reset,
   error,
   logo
-}
+};
 
-export const ICONS = Object.keys(IMAGES)
+export const ICONS = Object.keys(IMAGES);

@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Container } from 'react-bootstrap';
 import '../../styles/Scoreboard.css';
-import { Navigation } from '../Navigation';
 import { LoadingMessage } from './LoadingMessage';
 import { ErrorMessage } from './ErrorMessage';
 import { NumberOfCardsFilter } from './Filter';
 import { ScoresOrderSelector } from './ScoresOrderSelector';
 import { ScoresList } from './ScoresList';
 import { ChunksList } from './ChunksList';
-import { SCORES_ORDER_OPTIONS, NUMBER_OF_ELEMENTS_PER_PAGE } from '../../constants';
 import { fetchPastScores } from '../../actions/scoreboard';
+import { SCORES_ORDER_OPTIONS, NUMBER_OF_ELEMENTS_PER_PAGE } from '../../constants';
 import { compareNumbers, chunkify } from '../../utils';
-import { Container } from 'react-bootstrap';
+
 
 const ScoreboardPure = ({ 
   fetchPastScores, 
@@ -21,7 +21,7 @@ const ScoreboardPure = ({
   numberOfCards,
   scoresOrder,
   selectedChunk }) => {
-  useEffect(() => fetchPastScores(), [fetchPastScores])
+  useEffect(() => fetchPastScores(), [fetchPastScores]);
 
   const filterScores = (scores) => {
     if(numberOfCards !== 'All') {
@@ -30,12 +30,12 @@ const ScoreboardPure = ({
       )
     } else {
       return scores
-    }
-  }
+    };
+  };
 
   const sortScores = (scores, criterion, direction) => {
-    return scores.sort((a, b) => compareNumbers(a, b, criterion, direction))
-  }
+    return scores.sort((a, b) => compareNumbers(a, b, criterion, direction));
+  };
 
   const orderScores = (scores) => {
     switch(scoresOrder) {
@@ -49,15 +49,15 @@ const ScoreboardPure = ({
         return sortScores(scores, 'time', 'DESC');
       default:
         return scores;
-    }
-  }
+    };
+  };
 
   const preparedScores = 
     chunkify(
       orderScores(
         filterScores(pastScores)
       ), 
-    NUMBER_OF_ELEMENTS_PER_PAGE)
+    NUMBER_OF_ELEMENTS_PER_PAGE);
 
   return (
     <Container className="scoreboardBody">
@@ -74,8 +74,8 @@ const ScoreboardPure = ({
         </Container>
       }
     </Container>
-  )
-}
+  );
+};
 
 export const Scoreboard = connect(
   state => ({
@@ -89,4 +89,4 @@ export const Scoreboard = connect(
   {
     fetchPastScores
   }
-)(ScoreboardPure)
+)(ScoreboardPure);

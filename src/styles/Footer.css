@@ -1,11 +1,7 @@
 footer {
-  flex-shrink: 0;
-  left: 0;
-  /* bottom: 0; */
+  height: 50px;
   width: 100%;
-  /* background-color: rgb(206, 165, 104); */
   border-top: 3px solid rgb(73, 103, 134);
-  /* color: white; */
   text-align: center;
   font-size: small;
   padding: 5px 0 5px 0;

@@ -2,26 +2,24 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { buildBoard } from '../../actions/game';
 import { Form } from 'react-bootstrap';
-import { IMAGES } from '../../constants';
+import { MIN_NUMBER_OF_CARDS, MAX_NUMBER_OF_CARDS, IMAGES } from '../../constants';
 
 const GameFormPure = ({ buildBoard }) => {
-  const MIN_NUMBER_OF_CARDS = 4
-  const MAX_NUMBER_OF_CARDS = 20
-  const ERROR_MESSAGE = `Please provide an even number from ${MIN_NUMBER_OF_CARDS} to ${MAX_NUMBER_OF_CARDS}`
-  const [cardsNumber, setCardsNumber] = useState(MIN_NUMBER_OF_CARDS)
+  const [cardsNumber, setCardsNumber] = useState(MIN_NUMBER_OF_CARDS);
 
   const validateInput = (value) => {
     return (
       value >= MIN_NUMBER_OF_CARDS &&
       value <= MAX_NUMBER_OF_CARDS &&
-      value % 2 === 0) 
-  }
+      value % 2 === 0
+    ); 
+  };
 
   const handleClick = () => {
     if(validateInput(cardsNumber)) {
       buildBoard(cardsNumber)
-    }
-  }
+    };
+  };
 
   return (
     <Form className="form">
@@ -43,8 +41,8 @@ const GameFormPure = ({ buildBoard }) => {
         <img src={IMAGES['tickBox']}></img>
       </button>
     </Form>
-  )
-}
+  );
+};
 
 export const GameForm = connect(
   state => ({}),
