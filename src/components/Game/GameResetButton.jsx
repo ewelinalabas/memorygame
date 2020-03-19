@@ -1,16 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { resetGame } from '../../actions/game';
+import { Container } from 'react-bootstrap';
+import { IMAGES } from '../../constants';
 
-const ResetButtonPure = ({ resetGame, text }) => {
+export const ResetButton = ({ action, text }) => {
   return (
-      <button type="submit" onClick={resetGame}>{text}</button>
-  )
-}
-
-export const ResetButton = connect(
-  state => ({}),
-  {
-    resetGame
-  }
-)(ResetButtonPure)
+    <Container className="reset-button">
+      <button 
+        type="submit" 
+        onClick={action}
+      >
+        <img 
+          src={IMAGES["reset"]}
+          alt="Reset"
+        ></img>
+        {text}
+      </button>
+    </Container>
+  );
+};

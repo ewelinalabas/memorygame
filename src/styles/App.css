@@ -1,0 +1,122 @@
+.game-body {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 3rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.form-label {
+  font-size: x-large;
+  font-weight: 400;
+}
+
+.sublabel {
+  font-size: medium;
+}
+
+.form-control, .form-control:focus {
+  width: max-content;
+  font-size: xx-large;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid rgba(73, 103, 134, 0.5);
+  border-radius: 0px;
+  box-shadow: none;
+  background-color: rgb(247, 247, 247);
+}
+
+.submit-button {
+  overflow: auto;
+  margin-top: 8px;
+  background-color: rgb(247, 247, 247) !important;
+  border-color: rgb(247, 247, 247) !important;
+  opacity: 0.5;
+  transition: 1s;
+}
+
+.submit-button:hover {
+  opacity: 1;
+}
+
+.timer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.timer-text {
+  width: 50px;
+  font-size: large;
+}
+
+.board {
+  display: block;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  margin: 1em 1em 1em 1em;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  margin: 0em 0.5em 0em 0.5em;
+  text-align: center;
+  padding: 0px 0px 0px 0px;
+  background-color: rgb(236, 193, 128);
+  border: 1px solid rgb(206, 165, 104);
+  transition: 1s;
+}
+
+.card:hover {
+  background-color: rgb(73, 103, 134);
+  border: 1px solid rgb(206, 165, 104);
+}
+
+.card:focus {
+  border: 5px solid rgb(206, 165, 104);
+  box-shadow: none;
+}
+
+.matched, .matched:focus, .matched:hover {
+  background-color: rgb(247, 247, 247);
+  border: none;
+}
+
+.reset-button {
+  justify-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.reset-button button {
+  border: none;
+  background-color: rgb(247, 247, 247);
+  opacity: 0.5;
+  transition: 1s;
+}
+
+.reset-button button:hover {
+  opacity: 1;
+}
+
+.reset-button button:focus {
+  outline-style: none;
+}

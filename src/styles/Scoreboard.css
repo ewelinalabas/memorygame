@@ -1,0 +1,79 @@
+.scoreboard-body {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.error-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading, .error {
+  font-size: x-large;
+}
+
+.scoreboard {
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.filters-group {
+  display: inline-flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.filter {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin: 0 2rem 0 2rem;
+}
+
+.filter label, .filter select, .filter select:focus {
+  font-size: medium;
+  width: auto;
+  border: none;
+}
+
+table {
+  max-width: 50%;
+  align-self: center;
+  font-size: small;
+  text-align: center;
+}
+
+thead {
+  background-color: rgb(73, 103, 134);
+  color: white;
+}
+
+th, td {
+  width: 50%;
+  vertical-align: middle !important;
+  border: 1px solid rgb(206, 165, 104) !important;
+}
+
+.pagination {
+  align-self: center;
+  font-size: small;
+}
+
+.page-link {
+  background-color:  rgb(247, 247, 247);
+  border: 1px solid rgb(206, 165, 104);
+  color: inherit;
+}
+
+.page-link:hover, .page-item.active .page-link {
+  background-color: rgb(73, 103, 134);
+  border: 1px solid rgb(206, 165, 104);
+  color: white;
+}

@@ -1,13 +1,14 @@
 import React from 'react';
+import { Table } from 'react-bootstrap';
 import { ScoreItem } from './ScoreItem';
 
 export const ScoresList = ({ scores }) => {
   return (
-    <table>
+    <Table striped hover size="sm">
       <thead>
         <tr>
           <th>Number of cards</th>
-          <th>Play time</th>
+          <th>Play time <br />[hh:mm:ss]</th>
         </tr>
       </thead>
       <tbody>
@@ -19,10 +20,10 @@ export const ScoresList = ({ scores }) => {
           />)
         }
       </tbody>
-    </table>
-  )
-}
+    </Table>
+  );
+};
 
 ScoresList.defaultProps = {
   scores: []
-}
+};

@@ -1,8 +1,12 @@
 import React from 'react';
-import './App.css';
+import './styles/App.css';
 import { GameBody } from './components/Game/GameBody';
 
 export const App = () => {
-  return ( <GameBody /> )
-}
+  return ( 
+    <div className="game-body">
+      <GameBody /> 
+    </div>
+  );
+};
 

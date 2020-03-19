@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 export const getScores = () => {
-  return axios.get('http://salty-headland-84520.herokuapp.com/scores')
+  return axios
+  .get('http://salty-headland-84520.herokuapp.com/scores')
+  .then(response => response.data)
 }
 
 export const saveScore = (duration, numberOfCards) => {

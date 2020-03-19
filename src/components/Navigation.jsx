@@ -1,11 +1,26 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Navbar, Nav } from "react-bootstrap";
+import '../styles/Navigation.css';
+import { IMAGES } from '../constants';
 
-export const Navigation = () => {
+export const Navigation = ({ location }) => {
   return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/scoreboard">Scoreboard</NavLink>
-    </nav>
-  )
-}
+    <Navbar expand="sm">
+        <Navbar.Brand>
+          <img 
+            src={IMAGES["logo"]}
+            alt="Cards"
+          ></img>
+          Memory
+        </Navbar.Brand>
+        <Nav activeKey={location.pathname} className="mr-auto">
+          <Nav.Link href="/" className="nav-item nav-link">
+            Game
+          </Nav.Link>
+          <Nav.Link href="/scoreboard" className="nav-item nav-link">
+            Scoreboard
+          </Nav.Link>
+        </Nav>
+    </Navbar>
+  );
+};

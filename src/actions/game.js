@@ -1,13 +1,14 @@
 import { saveScore } from '../APIcalls';
 import { validateMatch, validateGameEnd } from '../validators';
 
-const BUILD_BOARD = 'BUILD_BOARD'
-const FACE_CARD_UP = 'FACE_CARD_UP'
-const FACE_CARDS_DOWN = 'FACE_CARDS_DOWN'
-const MARK_MATCHING_CARDS = 'MARK_MATCHING_CARDS'
-const END_GAME = 'END_GAME'
-const RESET_GAME = 'RESET_GAME'
-const UPDATE_DURATION = 'UPDATE_DURATION'
+const BUILD_BOARD = 'BUILD_BOARD';
+const FACE_CARD_UP = 'FACE_CARD_UP';
+const FACE_CARDS_DOWN = 'FACE_CARDS_DOWN';
+const MARK_MATCHING_CARDS = 'MARK_MATCHING_CARDS';
+const END_GAME = 'END_GAME';
+const RESET_GAME = 'RESET_GAME';
+const UPDATE_DURATION = 'UPDATE_DURATION';
+const PAUSE_GAME = 'PAUSE_GAME';
 
 export const buildBoard = (value) => ({
   type: BUILD_BOARD,
@@ -29,8 +30,8 @@ export const makeMove = (id) => {
         dispatch(faceCardsDown())
       }, 1000) : 
       setTimeout(() => dispatch(faceCardsDown()), 1000)
-    }
-  }
+    };
+  };
 };
 
 const markCardsAndCheckGameEnd = (value) => {
@@ -41,8 +42,8 @@ const markCardsAndCheckGameEnd = (value) => {
     if(validateGameEnd(gameBoard)) {
       saveScore(duration, gameBoard.length)
       dispatch(endGame())
-    }
-  }
+    };
+  };
 };
 
 export const faceCardUp = (id) => ({
@@ -69,4 +70,9 @@ export const resetGame = () => ({
 
 export const updateDuration = () => ({
   type: UPDATE_DURATION
+});
+
+export const pauseGame = (isPaused) => ({
+  type: PAUSE_GAME,
+  payload: isPaused
 });

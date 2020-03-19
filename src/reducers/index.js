@@ -5,4 +5,4 @@ import { scoreboard} from './scoreboard';
 export const rootReducer = combineReducers({
   game,
   scoreboard
-})
+});

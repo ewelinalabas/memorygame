@@ -1,0 +1,12 @@
+footer {
+  height: 50px;
+  width: 100%;
+  border-top: 3px solid rgb(73, 103, 134);
+  text-align: center;
+  font-size: small;
+  padding: 5px 0 5px 0;
+}
+
+.footer-text {
+  margin: 1px 0 1px 0;
+}

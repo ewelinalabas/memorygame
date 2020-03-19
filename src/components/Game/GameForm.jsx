@@ -1,45 +1,51 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { buildBoard } from '../../actions/game';
+import { Form } from 'react-bootstrap';
+import { MIN_NUMBER_OF_CARDS, MAX_NUMBER_OF_CARDS, IMAGES } from '../../constants';
 
 const GameFormPure = ({ buildBoard }) => {
-  const MIN_NUMBER_OF_CARDS = 4
-  const MAX_NUMBER_OF_CARDS = 20
-  const ERROR_MESSAGE = `Please provide an even number from ${MIN_NUMBER_OF_CARDS} to ${MAX_NUMBER_OF_CARDS}`
-  const [cardsNumber, setCardsNumber] = useState(MIN_NUMBER_OF_CARDS)
-  const [errorMessage, setErrorMessage] = useState('')
+  const [cardsNumber, setCardsNumber] = useState(MIN_NUMBER_OF_CARDS);
 
   const validateInput = (value) => {
     return (
       value >= MIN_NUMBER_OF_CARDS &&
       value <= MAX_NUMBER_OF_CARDS &&
-      value % 2 === 0) 
-  }
+      value % 2 === 0
+    ); 
+  };
 
   const handleClick = () => {
     if(validateInput(cardsNumber)) {
       buildBoard(cardsNumber)
-    } else {
-      setErrorMessage(ERROR_MESSAGE)
-    }
-  }
+    };
+  };
 
   return (
-    <div className="App">
-      <p>Input number of cards</p>
-      <input 
+    <Form className="form">
+      <Form.Label>How many cards would you like to play with?</Form.Label>
+      <Form.Label className="sublabel">Choose an even number from 4 to 20.</Form.Label>
+      <Form.Control 
         type="number" 
         min={MIN_NUMBER_OF_CARDS}
         max={MAX_NUMBER_OF_CARDS}
         step="2"
         value={cardsNumber} 
         onChange={(event) => setCardsNumber(event.target.value)}
-      ></input>
-      <button type="submit" onClick={handleClick}>Play</button>
-      <p>{errorMessage}</p>
-    </div>
-  )
-}
+      ></Form.Control>
+      <button 
+        type="submit" 
+        className="submit-button"
+        onClick={handleClick}
+      >
+        <img 
+          src={IMAGES["tickBox"]}
+          alt="Submit"
+        ></img>
+      </button>
+    </Form>
+  );
+};
 
 export const GameForm = connect(
   state => ({}),
