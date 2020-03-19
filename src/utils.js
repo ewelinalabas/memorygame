@@ -24,25 +24,26 @@ const subtract = (values) => {
 };
 
 export const compareNumbers = (a, b, criterion, direction) => {
-  const values = direction === 'ASC' ? [a, b] : [b, a];
+  const values = direction === "ASC" ? [a, b] : [b, a];
 
-  if(criterion === 'created_at') {
+  if(criterion === "created_at") {
     return subtract(values.map(score => Date.parse(score.created_at)));
-  } else if(criterion === 'time') {
+  } else if(criterion === "time") {
     return subtract(values.map(score => score.time));
   } else {
     return a - b;
   };
 };
 
-export const chunkify = (list, step) => {
-  const numberOfChunks = Math.ceil(list.length / step);
-  let chunkedList = [];
-  let beginning = 0;
-  
-  for(let i = 0; i < numberOfChunks; i++) {
-    chunkedList.push(list.slice(beginning, beginning + step))
-    beginning += step
+export const chunkify = (list, numberOfItemsInChunk) => {
+  const splitToChunks = (output, el, index) => {
+    if(index % numberOfItemsInChunk !== 0) {
+      output[output.length - 1].push(el)
+      return output
+    } else {
+      return output.concat([[el]])
+    };
   };
-  return chunkedList;
+
+  return list.reduce(splitToChunks, []);
 };

@@ -7,10 +7,10 @@ import { compareNumbers } from '../../utils';
 const NumberOfCardsFilterPure = ({ pastScores, numberOfCards, setNumberOfCardsFilter }) => {
   const getOptions = (scores) => {
     const allNumbers = scores.map(score => score.number_of_cards);
-    const distinctNumbers = [ ...new Set(allNumbers) ];
+    let distinctNumbers = [ ...new Set(allNumbers) ]
     distinctNumbers
       .sort(compareNumbers)
-      .unshift("All");
+      .unshift("All")
 
     return distinctNumbers.map((number, index) => (
       <option 
@@ -32,7 +32,7 @@ const NumberOfCardsFilterPure = ({ pastScores, numberOfCards, setNumberOfCardsFi
       <Form.Control
         as="select"
         size="sm"
-        custom
+        custom="true"
         name="numberOfCardsFilter"
         value={numberOfCards} 
         onChange={(event) => setNumberOfCardsFilter(event.target.value)}

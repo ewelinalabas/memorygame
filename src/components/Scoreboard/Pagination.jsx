@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Pagination } from 'react-bootstrap';
 import { changeChunkOfScores } from '../../actions/scoreboard';
 
-const ChunksListPure = ({
+const ScoresPaginationPure = ({
   chunks, 
   selectedChunkOfScores, 
   changeChunkOfScores }) => {
@@ -24,15 +24,15 @@ const ChunksListPure = ({
   );
 };
 
-export const ChunksList = connect(
+export const ScoresPagination = connect(
   state => ({
     selectedChunkOfScores: state.scoreboard.selectedChunkOfScores
   }), 
   {
     changeChunkOfScores
   }
-)(ChunksListPure);
+)(ScoresPaginationPure);
 
-ChunksListPure.defaultProps = {
+ScoresPaginationPure.defaultProps = {
   chunks: []
 };

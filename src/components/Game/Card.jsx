@@ -18,7 +18,10 @@ export const Card = ({ id, visible, matched, value, handleClick}) => {
       className={className}
       onClick={() => handleClick(id)}
     >
-      <img src={image}></img>
+      <img 
+        src={image}
+        alt="Card"
+      ></img>
     </div>
   );
 };

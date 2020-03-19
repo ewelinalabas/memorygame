@@ -7,7 +7,7 @@ import { ErrorMessage } from './ErrorMessage';
 import { NumberOfCardsFilter } from './Filter';
 import { ScoresOrderSelector } from './ScoresOrderSelector';
 import { ScoresList } from './ScoresList';
-import { ChunksList } from './ChunksList';
+import { ScoresPagination } from './Pagination';
 import { fetchPastScores } from '../../actions/scoreboard';
 import { SCORES_ORDER_OPTIONS, NUMBER_OF_ELEMENTS_PER_PAGE } from '../../constants';
 import { compareNumbers, chunkify } from '../../utils';
@@ -24,7 +24,7 @@ const ScoreboardPure = ({
   useEffect(() => fetchPastScores(), [fetchPastScores]);
 
   const filterScores = (scores) => {
-    if(numberOfCards !== 'All') {
+    if(numberOfCards !== "All") {
       return scores.filter(score =>
         score.number_of_cards === parseInt(numberOfCards)
       )
@@ -70,7 +70,7 @@ const ScoreboardPure = ({
             <ScoresOrderSelector />
           </div>
           <ScoresList scores={preparedScores[selectedChunk]} />
-          <ChunksList chunks={preparedScores} />
+          <ScoresPagination chunks={preparedScores} />
         </Container>
       }
     </Container>

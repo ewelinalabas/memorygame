@@ -18,17 +18,16 @@
 }
 
 .scoreboard {
-  height: inherit;
+  min-height: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .filters-group {
   display: inline-flex;
   justify-content: center;
   align-items: baseline;
-  margin-top: 2rem;
 }
 
 .filter {
@@ -65,7 +64,6 @@ th, td {
 .pagination {
   align-self: center;
   font-size: small;
-  margin-bottom: 2rem;
 }
 
 .page-link {

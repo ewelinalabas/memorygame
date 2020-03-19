@@ -13,7 +13,7 @@ export const scoreboard = (state = initialState, action) => {
   switch(action.type) {
     case 'SET_PAST_SCORES':
       return { ...state, pastScores: action.payload };
-    case 'FETCH_PAST_SCORES_BEGIN':
+    case 'FETCH_PAST_SCORES_PENDING':
       return { ...state, loading: true };
     case 'FETCH_PAST_SCORES_SUCCESS':
       return { ...state, loading: false, pastScores: action.payload };

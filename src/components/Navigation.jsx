@@ -7,7 +7,10 @@ export const Navigation = ({ location }) => {
   return (
     <Navbar expand="sm">
         <Navbar.Brand>
-          <img src={IMAGES["logo"]}></img>
+          <img 
+            src={IMAGES["logo"]}
+            alt="Cards"
+          ></img>
           Memory
         </Navbar.Brand>
         <Nav activeKey={location.pathname} className="mr-auto">

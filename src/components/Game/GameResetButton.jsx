@@ -9,7 +9,10 @@ export const ResetButton = ({ action, text }) => {
         type="submit" 
         onClick={action}
       >
-        <img src={IMAGES["reset"]}></img>
+        <img 
+          src={IMAGES["reset"]}
+          alt="Reset"
+        ></img>
         {text}
       </button>
     </Container>

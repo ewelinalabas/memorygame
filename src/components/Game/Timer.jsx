@@ -14,7 +14,10 @@ const TimerPure = ({ duration, paused, updateDuration}) => {
 
   return (
     <Container className="timer">
-      <img src={IMAGES["clock"]}></img>
+      <img 
+        src={IMAGES["clock"]}
+        alt="Clock"  
+      ></img>
       <p className="timer-text">
         {formatDuration(duration)}
       </p>
