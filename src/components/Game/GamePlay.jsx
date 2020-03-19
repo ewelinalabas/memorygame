@@ -20,7 +20,7 @@ const GamePlayPure = ({ pauseGame, resetGame }) => {
   };
 
   return (
-    <div className="gameBody">
+    <div className="game-body">
       <Timer /> 
       <Board />
       <ResetButton action={pause} text="Reset"/>

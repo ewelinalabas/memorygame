@@ -7,13 +7,13 @@ import { Form } from 'react-bootstrap';
 const ScoresOrderSelectorPure = ({ scoresOrder, changeScoresOrder }) => {
   return (
     <Form className="filter">
-      <Form.Label htmlFor='ScoresOrderSelector'>
+      <Form.Label htmlFor="ScoresOrderSelector">
         Order
       </Form.Label>
       <Form.Control
         as="select"
         size="sm"
-        name='ScoresOrderSelector'
+        name="ScoresOrderSelector"
         value={scoresOrder}
         onChange={(event) => changeScoresOrder(event.target.value)}
       >

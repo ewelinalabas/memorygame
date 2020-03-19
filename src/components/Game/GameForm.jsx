@@ -35,10 +35,10 @@ const GameFormPure = ({ buildBoard }) => {
       ></Form.Control>
       <button 
         type="submit" 
-        className="submitButton"
+        className="submit-button"
         onClick={handleClick}
       >
-        <img src={IMAGES['tickBox']}></img>
+        <img src={IMAGES["tickBox"]}></img>
       </button>
     </Form>
   );

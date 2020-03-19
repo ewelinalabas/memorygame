@@ -1,4 +1,4 @@
-.gameBody {
+.game-body {
   min-height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@
   background-color: rgb(247, 247, 247);
 }
 
-.submitButton {
+.submit-button {
   overflow: auto;
   margin-top: 8px;
   background-color: rgb(247, 247, 247) !important;
@@ -42,7 +42,7 @@
   transition: 1s;
 }
 
-.submitButton:hover {
+.submit-button:hover {
   opacity: 1;
 }
 
@@ -98,7 +98,7 @@
   border: none;
 }
 
-.resetButton {
+.reset-button {
   justify-self: center;
   display: flex;
   flex-direction: row;
@@ -106,17 +106,17 @@
   align-items: center;
 }
 
-.resetButton button {
+.reset-button button {
   border: none;
   background-color: rgb(247, 247, 247);
   opacity: 0.5;
   transition: 1s;
 }
 
-.resetButton button:hover {
+.reset-button button:hover {
   opacity: 1;
 }
 
-.resetButton button:focus {
+.reset-button button:focus {
   outline-style: none;
 }

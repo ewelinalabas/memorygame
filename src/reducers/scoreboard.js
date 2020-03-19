@@ -4,7 +4,7 @@ const initialState = {
   loading: false,
   pastScores: [],
   error: null,
-  numberOfCardsFilter: 'All',
+  numberOfCardsFilter: "All",
   scoresOrder: SCORES_ORDER_OPTIONS.NEWEST_TO_OLDEST,
   selectedChunkOfScores: 0
 };

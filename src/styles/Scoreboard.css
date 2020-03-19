@@ -1,4 +1,4 @@
-.scoreboardBody {
+.scoreboard-body {
   min-height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.errorBoard {
+.error-board {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,7 +24,7 @@
   justify-content: space-between;
 }
 
-.filtersGroup {
+.filters-group {
   display: inline-flex;
   justify-content: center;
   align-items: baseline;

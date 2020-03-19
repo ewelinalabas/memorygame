@@ -4,7 +4,7 @@ import { GameBody } from './components/Game/GameBody';
 
 export const App = () => {
   return ( 
-    <div className="gameBody">
+    <div className="game-body">
       <GameBody /> 
     </div>
   );

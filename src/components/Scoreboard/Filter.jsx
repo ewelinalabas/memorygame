@@ -10,7 +10,7 @@ const NumberOfCardsFilterPure = ({ pastScores, numberOfCards, setNumberOfCardsFi
     const distinctNumbers = [ ...new Set(allNumbers) ];
     distinctNumbers
       .sort(compareNumbers)
-      .unshift('All');
+      .unshift("All");
 
     return distinctNumbers.map((number, index) => (
       <option 
@@ -26,7 +26,7 @@ const NumberOfCardsFilterPure = ({ pastScores, numberOfCards, setNumberOfCardsFi
 
   return (
     <Form className="filter">
-      <Form.Label htmlFor='numberOfCardsFilter'>
+      <Form.Label htmlFor="numberOfCardsFilter">
         Filter by number of cards
       </Form.Label>
       <Form.Control

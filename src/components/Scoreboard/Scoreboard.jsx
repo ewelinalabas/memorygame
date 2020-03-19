@@ -40,13 +40,13 @@ const ScoreboardPure = ({
   const orderScores = (scores) => {
     switch(scoresOrder) {
       case SCORES_ORDER_OPTIONS.OLDEST_TO_NEWEST:
-        return sortScores(scores, 'created_at', 'ASC');
+        return sortScores(scores, "created_at", "ASC");
       case SCORES_ORDER_OPTIONS.NEWEST_TO_OLDEST:
-        return sortScores(scores, 'created_at', 'DESC');
+        return sortScores(scores, "created_at", "DESC");
       case SCORES_ORDER_OPTIONS.DURATION_ASCENDING:
-        return sortScores(scores, 'time', 'ASC');
+        return sortScores(scores, "time", "ASC");
       case SCORES_ORDER_OPTIONS.DURATION_DESCENDING:
-        return sortScores(scores, 'time', 'DESC');
+        return sortScores(scores, "time", "DESC");
       default:
         return scores;
     };
@@ -60,12 +60,12 @@ const ScoreboardPure = ({
     NUMBER_OF_ELEMENTS_PER_PAGE);
 
   return (
-    <Container className="scoreboardBody">
+    <Container className="scoreboard-body">
       { loading && <LoadingMessage /> }
       { error && <ErrorMessage />}
       { !loading && !error &&
         <Container className="scoreboard">
-          <div className="filtersGroup">
+          <div className="filters-group">
             <NumberOfCardsFilter />
             <ScoresOrderSelector />
           </div>

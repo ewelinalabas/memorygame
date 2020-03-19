@@ -6,11 +6,11 @@ export const Card = ({ id, visible, matched, value, handleClick}) => {
   let image = null;
 
   if(!visible && !matched) {
-    image = IMAGES['questionMark']
+    image = IMAGES["questionMark"]
   } else if(visible && !matched) {
     image = IMAGES[value]
   } else if(matched) {
-   image = IMAGES['transparent']
+   image = IMAGES["transparent"]
   };
  
   return(
