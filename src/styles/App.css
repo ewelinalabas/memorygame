@@ -46,6 +46,10 @@
   opacity: 1;
 }
 
+.submit-button:focus {
+  outline-style: none;
+}
+
 .timer {
   display: flex;
   flex-direction: row;

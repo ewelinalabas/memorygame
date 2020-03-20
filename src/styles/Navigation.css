@@ -4,3 +4,7 @@
   align-items: baseline;
   padding: 0 0 0 0.5rem;
 }
+
+.disabled {
+  color: rgb(247, 247, 247) !important;
+}

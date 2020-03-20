@@ -1,9 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Navbar, Nav } from "react-bootstrap";
 import '../styles/Navigation.css';
 import { IMAGES } from '../constants';
 
-export const Navigation = ({ location }) => {
+const NavigationPure = ({ location, phase }) => {
+  const disabled = phase === "play"
+
   return (
     <Navbar expand="sm">
         <Navbar.Brand>
@@ -17,10 +20,16 @@ export const Navigation = ({ location }) => {
           <Nav.Link href="/" className="nav-item nav-link">
             Game
           </Nav.Link>
-          <Nav.Link href="/scoreboard" className="nav-item nav-link">
+          <Nav.Link href="/scoreboard" disabled={disabled} className="nav-item nav-link">
             Scoreboard
           </Nav.Link>
         </Nav>
     </Navbar>
   );
 };
+
+export const Navigation = connect(
+  state => ({
+    phase: state.game.phase
+  })
+)(NavigationPure)
