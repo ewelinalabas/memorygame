@@ -38,6 +38,7 @@
   margin-top: 8px;
   background-color: rgb(247, 247, 247) !important;
   border-color: rgb(247, 247, 247) !important;
+  border-style: initial;
   opacity: 0.5;
   transition: 1s;
 }
